@@ -16,10 +16,17 @@
                 Sign In
             </a>
         </div>
-        <button class="btn btn-login">
+        <div class="nav-item">
             <a href="#">
-                Register
+                <img src="./public/dog.jpeg" alt="" srcset="" class='avatar'>
             </a>
-        </button>
+        </div>
+        <div class="nav-btn">
+            <button class="btn btn-login">
+                <a href="#">
+                    Register
+                </a>
+            </button>
+        </div>
     </div>
 </nav>
