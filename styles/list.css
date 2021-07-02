@@ -16,11 +16,11 @@
   position: fixed;
 }
 .helplist-container {
-  /* height: 80vh; */
+  height: 80vh;
   width: 75%;
   background-color: transparent;
   border-radius: 5px;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   padding-left: 25%;
 }
 .help-item {
