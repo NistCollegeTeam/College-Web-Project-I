@@ -7,6 +7,27 @@
   margin: 0px;
   font-family: Poppins;
 }
+
+::-webkit-scrollbar {
+  background-color: rgb(191, 191, 191) !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-width: initial !important;
+  border-style: none !important;
+  border-color: initial !important;
+  border-image: initial !important;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(92, 92, 92) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: rgb(92, 92, 92) !important;
+  border-image: initial !important;
+  border-radius: 50px;
+}
+
 .container {
   padding: 1vh 10vw;
 }
