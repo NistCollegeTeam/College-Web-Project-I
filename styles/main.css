@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap");
 * {
-  --primary: rgb(133, 0, 133);
-  --secondary: rgb(194, 0, 194);
+  --primary: #a65bfc;
+  --secondary: #c099e8;
   --meta: rgb(0, 93, 168);
   --btn-shadow: rgba(163, 211, 226, 0.897);
   padding: 0px;
@@ -30,13 +30,14 @@
 }
 
 .container {
-  padding: 1vh 10vw;
+  padding: 13vh 10vw 1vh 10vw;
 }
 .btn {
   border: 0.1rem solid #a8a8a8;
   padding: 1vh 1vw;
   border-radius: 5px;
-  max-height: 5vh;
+  min-height: 30px;
+  max-height: 10vh;
   cursor: pointer;
 }
 input:focus,
@@ -54,8 +55,19 @@ input:focus,
 }
 
 input {
-  height: 4vh;
+  min-height: 30px;
+  max-height: 10vh;
   border-radius: 5px;
   margin: 1px;
   border: 0.1em solid rgb(131, 122, 122);
+}
+
+body {
+  background: rgb(195, 46, 232);
+  background: linear-gradient(
+    139deg,
+    rgba(195, 46, 232, 1) 0%,
+    rgba(232, 71, 200, 1) 39%,
+    rgba(228, 95, 255, 1) 100%
+  );
 }

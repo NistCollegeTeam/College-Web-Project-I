@@ -19,12 +19,12 @@
             <div class="sidebar">
                 FILTERS ARE GONNA BE HERE
                 <hr>
-                <div class="search-form">
-                    <input type="email" name="search" id="search-input" placeholder="Search Helps">
+                <form class="search-form">
+                    <input type="text" name="search" class="search-input" placeholder="Search Helps">
                     <button class="btn search-btn">
                         Search
                     </button>
-                </div>
+                </form>
             </div>
             <div class="helplist-container">
                 <div class="help-item">

@@ -21,11 +21,9 @@
                 <img src="./public/dog.jpeg" alt="" srcset="" class='avatar'>
             </a>
         </div>
-        <div class="nav-btn">
+        <div class="nav-btn nav-item">
             <button class="btn btn-login">
-                <a href="#">
                     Register
-                </a>
             </button>
         </div>
     </div>

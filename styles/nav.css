@@ -1,7 +1,13 @@
 nav {
   display: flex;
-  padding: 2vh 2vw;
+  padding: 1vh 2vw;
   justify-content: space-between;
+  background-color: white;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 nav a {
   text-decoration: none;
@@ -13,6 +19,8 @@ nav a {
   padding: 0.5vh 0vw;
   color: var(--primary);
   cursor: pointer;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .nav-links {
   display: flex;
@@ -20,6 +28,12 @@ nav a {
 .nav-item {
   padding: 1vh 2vw;
   text-align: center;
+  top: 30%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.nav-link {
+  padding: 5px;
 }
 .nav-btn {
   padding: 1vh;
@@ -28,6 +42,7 @@ nav a {
 .btn-login {
   border: none;
   background-color: var(--primary);
+  color: white;
 }
 .btn-login:active {
   background-color: var(--secondary);
@@ -38,8 +53,8 @@ nav a {
     0 0 5px var(--secondary);
 }
 .avatar {
-  width: 5vh;
-  height: 5vh;
+  width: 40px;
+  height: 40px;
   border-radius: 50px;
   overflow: hidden;
 }
