@@ -25,20 +25,17 @@ nav a {
   padding: 1vh;
   text-align: center;
 }
-.btn {
-  border: 0.1rem solid var(--primary);
-  padding: 1vh 2vw;
-  border-radius: 5px;
-  max-height: 5vh;
-}
-.btn a {
-  color: white;
-}
 .btn-login {
+  border: none;
   background-color: var(--primary);
 }
-.btn-login:hover {
+.btn-login:active {
   background-color: var(--secondary);
+}
+.btn-login:hover,
+.btn-login:focus {
+  box-shadow: 0px 0px 5px var(--secondary), 0 0 5px var(--secondary),
+    0 0 5px var(--secondary);
 }
 .avatar {
   width: 5vh;

@@ -1,0 +1,49 @@
+.title {
+  text-align: right;
+}
+.data-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+.sidebar {
+  background-color: yellow;
+  height: 80vh;
+  margin-right: 1vw;
+  width: 25%;
+  border-radius: 5px;
+  padding: 2vh;
+}
+.helplist-container {
+  height: 80vh;
+  width: 75%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+.help-item {
+  min-height: 10vh;
+  background-color: rgb(255, 221, 140);
+  margin: 1vh;
+  padding: 1vh;
+  border-radius: 5px;
+}
+.help-meta {
+  font-style: italic;
+  text-align: right;
+  color: var(--meta);
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+.search-btn {
+  background-color: teal;
+  color: white;
+  font-size: medium;
+}
+.search-btn:focus,
+.search-btn:active {
+  background-color: rgb(0, 173, 173);
+}
