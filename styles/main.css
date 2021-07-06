@@ -3,7 +3,7 @@
   --primary: #a65bfc;
   --secondary: #c099e8;
   --meta: rgb(0, 93, 168);
-  --btn-shadow: rgba(163, 211, 226, 0.897);
+  --focus-light: rgba(163, 211, 226, 0.897);
   padding: 0px;
   margin: 0px;
   font-family: Poppins;
@@ -40,11 +40,12 @@
   max-height: 10vh;
   cursor: pointer;
 }
+textarea:focus,
 input:focus,
 .btn:hover,
 .btn:focus {
-  box-shadow: 0px 0px 5px var(--btn-shadow), 0 0 5px var(--btn-shadow),
-    0 0 5px var(--btn-shadow);
+  box-shadow: 0px 0px 5px var(--focus-light), 0 0 5px var(--focus-light),
+    0 0 5px var(--focus-light);
   outline: none;
 }
 .btn:active {
@@ -54,6 +55,7 @@ input:focus,
   color: white;
 }
 
+.input,
 input {
   min-height: 30px;
   max-height: 10vh;
@@ -70,4 +72,13 @@ body {
     rgba(232, 71, 200, 1) 39%,
     rgba(228, 95, 255, 1) 100%
   );
+}
+
+.textarea {
+  min-height: 30px;
+  max-height: 10vh;
+  border-radius: 5px;
+  margin: 1px;
+  border: 0.1em solid rgb(131, 122, 122);
+  width: 100%;
 }

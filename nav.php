@@ -18,7 +18,7 @@
         </div>
         <div class="nav-item">
             <a href="#" class='nav-link'>
-                <img src="./public/dog.jpeg" alt="" srcset="" class='avatar'>
+                <img src="./public/avatar.jpeg" alt="" srcset="" class='avatar'>
             </a>
         </div>
         <div class="nav-btn nav-item">
