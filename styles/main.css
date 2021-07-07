@@ -4,6 +4,7 @@
   --secondary: #c099e8;
   --meta: rgb(0, 93, 168);
   --focus-light: rgba(163, 211, 226, 0.897);
+  --primary-btn-active: #6a32aa;
   padding: 0px;
   margin: 0px;
   font-family: Poppins;
