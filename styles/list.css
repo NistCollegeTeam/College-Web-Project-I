@@ -1,5 +1,6 @@
 .title {
   text-align: right;
+  color: rgba(255, 255, 255, 0.795);
 }
 .data-section {
   display: flex;
@@ -50,4 +51,12 @@
 }
 .search-btn:active {
   background-color: #6a32aa;
+}
+
+@media screen and (max-width: 1100px) {
+  .sidebar {
+    padding: 5px;
+    margin-right: 0px;
+    width: auto;
+  }
 }
