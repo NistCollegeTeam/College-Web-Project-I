@@ -16,12 +16,23 @@ nav a {
   text-decoration: none;
   color: black;
 }
+.nav-site-title {
+  display: flex;
+}
+
 .logo {
+  cursor: pointer;
+  padding: 0.5vh 8px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.nav-title {
   font-size: large;
   font-weight: 500;
-  padding: 0.5vh 0vw;
   color: var(--primary);
   cursor: pointer;
+  padding: 0.5vh 0vw;
   margin-top: auto;
   margin-bottom: auto;
 }

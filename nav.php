@@ -1,5 +1,12 @@
 <nav>
-    <div class="logo">Sharing is Caring</div>
+    <div class="nav-site-title">
+        <div class="logo">
+        <?php 
+        include './public/logo.svg'
+         ?>
+        </div>
+        <div class="nav-title">Sharing is Caring</div>
+    </div>
     <div class="nav-links">
         <div class="nav-item">
             <a href="#" class='nav-link'>
