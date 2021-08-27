@@ -11,6 +11,8 @@
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
+        <?php include("./login_nischal.php") ?>
+
     
     </div>
     

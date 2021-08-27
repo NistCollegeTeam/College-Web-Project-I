@@ -1,11 +1,13 @@
 <nav>
     <div class="nav-site-title">
+        <a href="/" class="nav-site-title">
         <div class="logo">
         <?php 
         include './public/logo.svg'
          ?>
         </div>
         <div class="nav-title">Sharing is Caring</div>
+        </a>
     </div>
     <div class="nav-links">
         <div class="nav-item">
@@ -19,7 +21,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="#" class='nav-link'>
+            <a href="./login.php" class='nav-link'>
                 Sign In
             </a>
         </div>

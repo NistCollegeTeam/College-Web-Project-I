@@ -43,6 +43,7 @@
 }
 .search-input {
   margin: 1vh 0px;
+  padding: 0px 10px 0px 10px;
 }
 .search-btn {
   background-color: #9239f9;

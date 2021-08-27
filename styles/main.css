@@ -41,6 +41,7 @@
   max-height: 10vh;
   cursor: pointer;
 }
+
 textarea:focus,
 input:focus,
 .btn:hover,
@@ -63,6 +64,7 @@ input {
   border-radius: 5px;
   margin: 1px;
   border: 0.1em solid rgb(131, 122, 122);
+  padding: 0px 10px 0px 10px;
 }
 
 body {
@@ -88,4 +90,21 @@ body {
   .container {
     padding: 13vh 15px 1vh 15px;
   }
+}
+
+.form-center-on-container {
+  padding: 5vh 5vw;
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  max-width: min-content;
+}
+
+.form-container {
+  border-radius: 3px;
+  height: 85vh;
+}
+
+.text-error {
+  color: red;
 }

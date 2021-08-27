@@ -9,11 +9,11 @@ title.addEventListener("click", function () {
   }
 });
 
-// var window_width = window.matchMedia("(min-width: 480px)");
-// function restoreNav(window_width) {
-//   if (window_width.matches) {
-//     // If media query matches
-//     menu.style.display = "flex";
-//   }
-// }
-// window_width.addListener(restoreNav); // Attach listener function on state changes
+var window_width = window.matchMedia("(min-width: 760px)");
+function restoreNav(window_width) {
+  if (window_width.matches) {
+    // If media query matches
+    menu.style.display = "flex";
+  }
+}
+window_width.addListener(restoreNav); // Attach listener function on state changes

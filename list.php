@@ -27,7 +27,7 @@
                     </button>
                 </form>
             </div>
-            <div class="helplist-container">
+            <div class="helplist-container" autofocus>
                 <div class="help-item">
                     <div class="help-title">
                         <h4>Help needed</h4>
