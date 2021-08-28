@@ -35,7 +35,7 @@
                     </div>
                     <div class="help-description">
                         <label for="create-help-description">Description:</label>
-                        <textarea name="create-help-description" id="" class="textarea" placeholder="Description about text...."></textarea>
+                        <textarea name="create-help-description" id="" class=" textarea" placeholder="Description about text...."></textarea>
                     </div>
                     <div class="help-meta">
                         - From Kathmandu

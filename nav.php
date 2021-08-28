@@ -11,13 +11,13 @@
     </div>
     <div class="nav-links">
         <div class="nav-item">
-            <a href="#" class='nav-link'>
-                About Us
+            <a href="./new-help.php" class='nav-link'>
+                Create New Help
             </a>
         </div>
         <div class="nav-item">
-            <a href="#" class='nav-link'>
-                Contact Us
+            <a href="./list.php" class='nav-link'>
+                Helps
             </a>
         </div>
         <div class="nav-item">

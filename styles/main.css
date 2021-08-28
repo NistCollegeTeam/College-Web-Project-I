@@ -81,9 +81,10 @@ body {
   min-height: 30px;
   max-height: 10vh;
   border-radius: 5px;
-  margin: 1px;
+  margin: auto;
   border: 0.1em solid rgb(131, 122, 122);
-  width: 100%;
+  width: -moz-available;
+  padding: 0px 10px 0px 10px;
 }
 
 @media screen and (max-width: 1100px) {
@@ -107,4 +108,8 @@ body {
 
 .text-error {
   color: red;
+}
+
+.text-white {
+  color: white;
 }
