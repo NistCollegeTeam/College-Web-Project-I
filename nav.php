@@ -31,9 +31,9 @@
             </a>
         </div>
         <div class="nav-btn nav-item">
-            <button class="btn btn-login">
+            <a class="btn btn-login" href="./register.php">
                     Register
-            </button>
+            </a>
         </div>
     </div>
 </nav>

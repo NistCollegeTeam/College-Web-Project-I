@@ -1,7 +1,7 @@
 <div class="form-container">
     <div class="form-center-on-container">
-        <h4>Login</h4>
-        <hr>
+    <h2>Login</h2>
+        <hr><br>
         <form action="." method="get" class="">
             <div class="form-item">
                 <label for="email">Email:</label>
@@ -12,10 +12,11 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="" placeholder="your-password">
                 <small id='password-error'></small>
-            </div>
+            </div><br>
             <div class="form-item">
                 <button type="submit" class="btn">Login</button>
             </div>
+            <small><a href="./register.php">Need an account?</a></small>
         </form>
     </div>
 </div>
