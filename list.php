@@ -1,5 +1,9 @@
+<?php
+include './includes/function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +14,7 @@
     <link rel="stylesheet" href="./styles/list.css">
     <title>Sharing is Caring | Helps - Search</title>
 </head>
+
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
@@ -158,14 +163,15 @@
                         - From Kathmandu
                     </div>
                 </div>
-                    
+
             </div>
         </div>
 
     </div>
 
-    
-    
+
+
     <script src="./scripts/nav.js"></script>
 </body>
+
 </html>

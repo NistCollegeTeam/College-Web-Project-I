@@ -1,3 +1,6 @@
+<?php
+include './includes/function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/nav.css">
-    <link rel="stylesheet" href="./styles/list.css">
     <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon">
     <title>Sharing is Caring</title>
 </head>

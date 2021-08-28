@@ -1,5 +1,9 @@
+<?php
+include("./includes/function.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +14,19 @@
     <link rel="stylesheet" href="./styles/list.css">
     <title>Sharing is Caring | Logged Out</title>
 </head>
+
 <body>
-    <?php include("./nav.php") ?>
+    <?php
+    include("./nav.php");
+    logout();
+    ?>
     <div class="container">
         <h1 class="text-white">You have been logged out. <small><a href="./login.php">Login again?</a></small></h1>
     </div>
 
-    
-    
+
+
     <script src="./scripts/nav.js"></script>
 </body>
+
 </html>
