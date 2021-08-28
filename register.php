@@ -22,6 +22,7 @@ endif
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
+        <?php include 'message.php'; ?>
         <div class="form-container">
             <div class="form-center-on-container">
                 <h2>Register</h2>

@@ -1,5 +1,6 @@
 <?php
 include("./includes/function.php");
+logout();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +19,9 @@ include("./includes/function.php");
 <body>
     <?php
     include("./nav.php");
-    logout();
     ?>
     <div class="container">
+        <?php include 'message.php'; ?>
         <h1 class="text-white">You have been logged out. <small><a href="./login.php">Login again?</a></small></h1>
     </div>
 

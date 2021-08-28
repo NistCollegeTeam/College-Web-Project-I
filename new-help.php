@@ -15,6 +15,7 @@
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
+        <?php include 'message.php'; ?>
         <div class="title">
             <h1>Create New Help</h1>
         </div>

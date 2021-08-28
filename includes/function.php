@@ -6,18 +6,18 @@ session_start();
 function createUser($email = NULL, $password = NULL)
 {
     global $conn;
-    $stmt = $conn->prepare('SELECT * FROM user WHERE email = ?');
-    $stmt->bind_param('s', $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $sql = $conn->prepare('SELECT * FROM user WHERE email = ?');
+    $sql->bind_param('s', $email);
+    $sql->execute();
+    $result = $sql->get_result();
     if ($result->num_rows !== 0) :
         $_SESSION['message'] = array('type' => 'danger', 'msg' => 'The email you chose is already registered.');
     else :
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare('INSERT INTO user (email, password) VALUES (?, ?)');
-        $stmt->bind_param('ss', $email, $password);
-        $stmt->execute();
-        $stmt->close();
+        $sql = $conn->prepare('INSERT INTO user (email, password) VALUES (?, ?)');
+        $sql->bind_param('ss', $email, $password);
+        $sql->execute();
+        $sql->close();
         if (isset($_SESSION['user'])) :
             $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully added a new user');
         else :
@@ -31,10 +31,10 @@ function createUser($email = NULL, $password = NULL)
 function authenticate($email = NULL, $password = NULL)
 {
     global $conn;
-    $stmt = $conn->prepare('SELECT * FROM user WHERE email = ?');
-    $stmt->bind_param('s', $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $sql = $conn->prepare('SELECT * FROM user WHERE email = ?');
+    $sql->bind_param('s', $email);
+    $sql->execute();
+    $result = $sql->get_result();
     echo $_POST['email'];
     if ($result->num_rows === 0) :
         $_SESSION['message'] = array('type' => 'danger', 'msg' => 'User with given email not found.');
@@ -51,7 +51,7 @@ function authenticate($email = NULL, $password = NULL)
             endif;
         }
     endif;
-    $stmt->close();
+    $sql->close();
 }
 // check if user is logged in
 function isAuthenticated()

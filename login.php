@@ -22,12 +22,8 @@ endif;
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
-        <?php if (isset($_SESSION['message'])) : ?>
-            <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>" role="alert">
-                <?php echo $_SESSION['message']['msg']; ?>
-            </div>
-            <?php unset($_SESSION['message']); ?>
-        <?php endif; ?>
+        <?php include 'message.php'; ?>
+
         <div class="form-container">
             <div class="form-center-on-container">
                 <h2>Login</h2>

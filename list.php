@@ -18,6 +18,7 @@ include './includes/function.php';
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
+        <?php include 'message.php'; ?>
         <div class="title">
             <h1>Helps Here</h1>
         </div>
