@@ -113,3 +113,17 @@ body {
 .text-white {
   color: white;
 }
+
+.btn-login {
+  border: none;
+  background-color: var(--primary);
+  color: white;
+}
+.btn-login:active {
+  background-color: var(--primary-btn-active);
+}
+.btn-login:hover,
+.btn-login:focus {
+  box-shadow: 0px 0px 5px var(--secondary), 0 0 5px var(--secondary),
+    0 0 5px var(--secondary);
+}

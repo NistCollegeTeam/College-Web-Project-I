@@ -1,6 +1,7 @@
-const title = document.querySelector(".nav-title");
+const hamburger = document.querySelector(".hamburger");
+console.log(hamburger);
 const menu = document.querySelector(".nav-links");
-title.addEventListener("click", function () {
+hamburger.addEventListener("click", function () {
   const display = menu.style.display;
   if (display == "flex") {
     menu.style.display = "none";

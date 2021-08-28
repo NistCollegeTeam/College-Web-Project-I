@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon">
     <title>Sharing is Caring | Create New Help</title>
 </head>
+
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
@@ -40,14 +42,15 @@
                     <div class="help-meta">
                         - From Kathmandu
                     </div>
-                </div>                    
+                </div>
             </div>
         </div>
 
     </div>
 
-    
-    
-    
+
+
+    <script src="./scripts/nav.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,15 @@
     <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon">
     <title>Sharing is Caring</title>
 </head>
+
 <body>
     <?php include("./nav.php") ?>
     <div class="container">
         THIS IS HOMEPAGE
     </div>
-    
-    
-    
+
+
+    <script src="./scripts/nav.js"></script>
 </body>
+
 </html>
