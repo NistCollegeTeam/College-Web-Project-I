@@ -12,10 +12,10 @@ services:
         image: mysql
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: admin
+            MYSQL_ROOT_PASSWORD: 
             MYSQL_DATABASE: sharing_is_caring
-            MYSQL_USER: admin
-            MYSQL_PASSWORD: admin
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 
         ports:
             - 8001:3306
     phpmyadmin:

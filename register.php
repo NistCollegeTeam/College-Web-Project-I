@@ -42,7 +42,8 @@ endif
                         <label for="password2">Confirm Password:</label>
                         <input type="password" name="password2" id="password2" placeholder="your-password-again">
                         <small id='password2-error'></small>
-                    </div><br> -->
+                    </div> -->
+                    <br>
                     <div class="form-item">
                         <button type="submit" name='registerBtn' class="btn btn-login">Sign Up</button>
                     </div>

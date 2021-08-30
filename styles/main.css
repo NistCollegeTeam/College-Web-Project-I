@@ -2,6 +2,10 @@
 * {
   --primary: #a65bfc;
   --secondary: #c099e8;
+  --primary-green: #227027;
+  --secondary-green: #90f096;
+  --primary-red: #a81b0e;
+  --secondary-red: #ff7a73;
   --meta: rgb(0, 93, 168);
   --focus-light: rgba(163, 211, 226, 0.897);
   --primary-btn-active: #6a32aa;
@@ -59,12 +63,10 @@ input:focus,
 
 .input,
 input {
-  min-height: 30px;
-  max-height: 10vh;
+  min-height: 3em;
   border-radius: 5px;
-  margin: 1px;
   border: 0.1em solid rgb(131, 122, 122);
-  padding: 0px 10px 0px 10px;
+  padding: 0px 1em 0px 1em;
 }
 
 body {
@@ -126,4 +128,23 @@ body {
 .btn-login:focus {
   box-shadow: 0px 0px 5px var(--secondary), 0 0 5px var(--secondary),
     0 0 5px var(--secondary);
+}
+
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: var(--primary-green);
+  background-color: var(--secondary-green);
+  border-color: var(--primary-green);
+}
+.alert-danger {
+  color: var(--primary-red);
+  background-color: var(--secondary-red);
+  border-color: var(--primary-red);
 }

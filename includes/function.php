@@ -31,7 +31,7 @@ function createUser($email = NULL, $password = NULL)
 function authenticate($email = NULL, $password = NULL)
 {
     global $conn;
-    $sql = $conn->prepare('SELECT * FROM user WHERE email = ?');
+    $sql = $conn->prepare("SELECT * FROM user WHERE email = ? AND active = 1");
     $sql->bind_param('s', $email);
     $sql->execute();
     $result = $sql->get_result();
@@ -66,7 +66,7 @@ function isAuthenticated()
 function logout()
 {
     unset($_SESSION['user']);
-    $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have been successfully logged out.');
-    // header('Location: /');
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You have been logged out.');
+    header('Location: /');
     exit();
 }

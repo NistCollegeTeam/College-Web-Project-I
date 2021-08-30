@@ -1,3 +1,6 @@
+<?php
+include "./includes/function.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +16,9 @@
 </head>
 
 <body>
-    <?php include("./nav.php") ?>
+    <?php
+    include "./nav.php"
+    ?>
     <div class="container">
         <?php include 'message.php'; ?>
         <div class="title">
