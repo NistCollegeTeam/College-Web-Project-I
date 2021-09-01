@@ -71,17 +71,11 @@ endif
             } else {
                 password2.classList.remove('invalid');
                 password2_error.innerHTML = "";
-                value !== password2.value) {
-                password2.classList.add('invalid');
-                password2_error.innerHTML = "Both password do not match!";
-                register_btn.setAttribute('disabled', true)
-            } else {
-                password2.classList.remove(
-                    register_btn.removeAttribute('disabled')
-                }
+                register_btn.removeAttribute('disabled')
             }
-            password1.addEventListener('change', PasswordValidator);
-            password2.addEventListener('change', PasswordValidator);
+        }
+        password1.addEventListener('change', PasswordValidator);
+        password2.addEventListener('change', PasswordValidator);
     </script>
 </body>
 
