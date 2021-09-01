@@ -31,8 +31,8 @@ endif;
                 <form action="./login.php" method="post" class="">
                     <div class="form-item">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" placeholder="example@email.com">
-                        <small class='text-error'>Email not verified!</small>
+                        <input class='' type="email" name="email" id="email" placeholder="example@email.com" autofocus>
+                        <!-- <small class='text-error'>Email not verified!</small> -->
                     </div>
                     <div class="form-item">
                         <label for="password">Password:</label>

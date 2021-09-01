@@ -1,5 +1,4 @@
 const hamburger = document.querySelector(".hamburger");
-console.log(hamburger);
 const menu = document.querySelector(".nav-links");
 hamburger.addEventListener("click", function () {
   const display = menu.style.display;

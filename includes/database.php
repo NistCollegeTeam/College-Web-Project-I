@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "admin";
 $database = "sharing_is_caring";
 
 // Create connection

@@ -18,7 +18,10 @@ include './includes/function.php';
     <?php include("./nav.php") ?>
     <div class="container">
         <?php include 'message.php'; ?>
-        THIS IS HOMEPAGE
+        <h1>Sharing Is Caring</h1>
+        <div class="youtube">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Un9BVWXVMG4?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
 
 

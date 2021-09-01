@@ -3,8 +3,6 @@ services:
     php-apache-environment:
         container_name: college-web-php
         image: php:8.0-apache
-        volumes:
-            - ./dockerdata/:/var/www/html/
         ports:
         - 8000:8000
     db:

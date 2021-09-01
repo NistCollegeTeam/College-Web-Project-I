@@ -71,12 +71,12 @@ input {
 
 body {
   background: rgb(195, 46, 232);
-  background: linear-gradient(
+  /* background: linear-gradient(
     139deg,
     rgba(195, 46, 232, 1) 0%,
     rgba(232, 71, 200, 1) 39%,
     rgba(228, 95, 255, 1) 100%
-  );
+  ); */
 }
 
 .textarea {
@@ -129,6 +129,9 @@ body {
   box-shadow: 0px 0px 5px var(--secondary), 0 0 5px var(--secondary),
     0 0 5px var(--secondary);
 }
+.btn-login:disabled {
+  background-color: grey;
+}
 
 .alert {
   position: relative;
@@ -147,4 +150,8 @@ body {
   color: var(--primary-red);
   background-color: var(--secondary-red);
   border-color: var(--primary-red);
+}
+.invalid {
+  border-color: var(--primary-red) !important;
+  background-color: var(--secondary-red) !important;
 }

@@ -30,22 +30,22 @@ endif
                 <form action="./register.php" method="post" class="">
                     <div class="form-item">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" placeholder="example@email.com">
-                        <small class='text-error'>Email not verified!</small>
+                        <input type="email" name="email" id="email" placeholder="example@email.com" autofocus>
+                        <!-- <small class='text-error'>Email not verified!</small> -->
                     </div>
                     <div class="form-item">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" id="password" placeholder="your-password">
-                        <small id='password1-error'></small>
+                        <label for="password1">Password:</label>
+                        <input type="password" name="password" id="password1" placeholder="your-password">
+                        <small id='password1-error' class='text-error'></small>
                     </div>
-                    <!-- <div class="form-item">
+                    <div class="form-item">
                         <label for="password2">Confirm Password:</label>
                         <input type="password" name="password2" id="password2" placeholder="your-password-again">
-                        <small id='password2-error'></small>
-                    </div> -->
+                        <small id='password2-error' class='text-error'></small>
+                    </div>
                     <br>
                     <div class="form-item">
-                        <button type="submit" name='registerBtn' class="btn btn-login">Sign Up</button>
+                        <button type="submit" name='registerBtn' id='registerBtn' class="btn btn-login" disabled>Sign Up</button>
                     </div>
                     <small><a href="./login.php">Already Have an account?</a></small>
                 </form>
@@ -57,6 +57,32 @@ endif
 
 
     <script src="./scripts/nav.js"></script>
+    <script>
+        const password1 = document.querySelector("#password1");
+        const password2 = document.querySelector("#password2");
+        const password2_error = document.querySelector("#password2-error");
+        const register_btn = document.querySelector("#registerBtn");
+
+        function PasswordValidator() {
+            if (password1.value !== password2.value) {
+                password2.classList.add('invalid');
+                password2_error.innerHTML = "Both password do not match!";
+                register_btn.setAttribute('disabled', true)
+            } else {
+                password2.classList.remove('invalid');
+                password2_error.innerHTML = "";
+                value !== password2.value) {
+                password2.classList.add('invalid');
+                password2_error.innerHTML = "Both password do not match!";
+                register_btn.setAttribute('disabled', true)
+            } else {
+                password2.classList.remove(
+                    register_btn.removeAttribute('disabled')
+                }
+            }
+            password1.addEventListener('change', PasswordValidator);
+            password2.addEventListener('change', PasswordValidator);
+    </script>
 </body>
 
 </html>
