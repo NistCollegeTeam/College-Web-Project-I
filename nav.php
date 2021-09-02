@@ -21,6 +21,7 @@
                 Helps
             </a>
         </div>
+
         <?php
         if (isAuthenticated() === true) :
         ?>

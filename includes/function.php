@@ -44,6 +44,7 @@ function authenticate($email = NULL, $password = NULL)
             if (password_verify($password, $hash)) :
                 $_SESSION['user']['id'] = $row['id'];
                 $_SESSION['user']['email'] = $row['email'];
+                $_SESSION['user']['role'] = $row['role'];
                 $_SESSION['message'] = array('type' => 'success', 'msg' => 'You are authenticated.');
                 header('Location :/');
             else :
@@ -53,6 +54,15 @@ function authenticate($email = NULL, $password = NULL)
     endif;
     $sql->close();
 }
+/* logout function */
+function logout()
+{
+    unset($_SESSION['user']);
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You have been logged out.');
+    header('Location: /');
+    exit();
+}
+
 // check if user is logged in
 function isAuthenticated()
 {
@@ -62,11 +72,13 @@ function isAuthenticated()
         return false;
     endif;
 }
-/* logout function */
-function logout()
+
+// check if user is logged in
+function isAdminUser()
 {
-    unset($_SESSION['user']);
-    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You have been logged out.');
-    header('Location: /');
-    exit();
+    if (isset($_SESSION['user'])) :
+        return $_SESSION['user']['role'] === 0;
+    else :
+        return false;
+    endif;
 }

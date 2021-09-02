@@ -30,17 +30,17 @@ endif
                 <form action="./register.php" method="post" class="">
                     <div class="form-item">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" placeholder="example@email.com" autofocus>
+                        <input type="email" name="email" id="email" placeholder="example@email.com" autofocus required>
                         <!-- <small class='text-error'>Email not verified!</small> -->
                     </div>
                     <div class="form-item">
                         <label for="password1">Password:</label>
-                        <input type="password" name="password" id="password1" placeholder="your-password">
+                        <input type="password" name="password" id="password1" placeholder="your-password" required>
                         <small id='password1-error' class='text-error'></small>
                     </div>
                     <div class="form-item">
                         <label for="password2">Confirm Password:</label>
-                        <input type="password" name="password2" id="password2" placeholder="your-password-again">
+                        <input type="password" name="password2" id="password2" placeholder="your-password-again" required>
                         <small id='password2-error' class='text-error'></small>
                     </div>
                     <br>
@@ -66,7 +66,7 @@ endif
         function PasswordValidator() {
             if (password1.value !== password2.value) {
                 password2.classList.add('invalid');
-                password2_error.innerHTML = "Both password do not match!";
+                password2_error.innerHTML = "Both password must match!";
                 register_btn.setAttribute('disabled', true)
             } else {
                 password2.classList.remove('invalid');
@@ -74,8 +74,8 @@ endif
                 register_btn.removeAttribute('disabled')
             }
         }
-        password1.addEventListener('change', PasswordValidator);
-        password2.addEventListener('change', PasswordValidator);
+        password1.addEventListener('keyup', PasswordValidator);
+        password2.addEventListener('keyup', PasswordValidator);
     </script>
 </body>
 

@@ -1,5 +1,12 @@
 <?php
-include "./includes/function.php"
+include "./includes/function.php";
+if (isAuthenticated() === false) :
+    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Please Login to Continue!');
+    header('Location: /login.php');
+endif;
+if (isset($_POST['post_help'])) :
+
+endif;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,19 +43,17 @@ include "./includes/function.php"
                 </form>
             </div>
             <div class="helplist-container">
-                <div class="help-item">
-                    <div class="help-title">
-                        <label for="create-help-title">Title:</label>
-                        <input type="text" placeholder="Help title" id='create-help-title' class=''>
-                    </div>
-                    <div class="help-description">
-                        <label for="create-help-description">Description:</label>
-                        <textarea name="create-help-description" id="" class=" textarea" placeholder="Description about text...."></textarea>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
+                <form class="help-item" method="post" action="./new-help.php">
+                    <label for="create-help-title">Title:</label><br>
+                    <input type="text" placeholder="Help title" id='create-help-title' class='' name="title" required><br>
+                    <label for="create-help-description">Description:</label><br>
+                    <textarea name="create-help-description" id="" class=" textarea" placeholder="Description about help..." rows='10' cols='100' name='description' required></textarea><br>
+                    <label for="create-help-location">Location:</label><br>
+                    <input type="text" placeholder="Help location" id='create-help-location' class='' name="location" required><br>
+                    <label for="create-help-contact">Contact:</label><br>
+                    <input type="number" placeholder="Helper contact number" id='create-help-contact' class='' name="contact" required><br>
+                    <button type="submit" value="submit" name="post_help" class="btn btn-login">Post Help</button>
+                </form>
             </div>
         </div>
 

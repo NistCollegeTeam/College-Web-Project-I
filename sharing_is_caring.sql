@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 30, 2021 at 06:06 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Host: localhost:3306
+-- Generation Time: Sep 02, 2021 at 08:41 PM
+-- Server version: 8.0.26-0ubuntu0.20.04.2
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,14 +25,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `helps`
+--
+
+CREATE TABLE `helps` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `contact` int NOT NULL,
+  `helper_id` int UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `helps_category`
+--
+
+CREATE TABLE `helps_category` (
+  `id` int NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `session_token`
 --
 
 CREATE TABLE `session_token` (
-  `id` int(255) NOT NULL,
-  `user_id` int(255) UNSIGNED NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
   `token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -40,26 +68,37 @@ CREATE TABLE `session_token` (
 --
 
 CREATE TABLE `user` (
-  `id` int(255) UNSIGNED NOT NULL COMMENT 'User Id',
+  `id` int UNSIGNED NOT NULL COMMENT 'User Id',
   `username` varchar(50) NOT NULL COMMENT 'username',
   `email` varchar(200) NOT NULL COMMENT 'email',
   `password` varchar(1000) NOT NULL COMMENT 'password',
-  `active` int(10) UNSIGNED NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `active` int UNSIGNED NOT NULL DEFAULT '1',
+  `email_verified` int NOT NULL DEFAULT '0',
+  `role` int NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `active`) VALUES
-(3, '', 'admin@g.com', 'ecd00aa1acd325ba7575cb0f638b04a5', 1),
-(4, '', 'nischalstha9@gmail.com', '$2y$10$vS7gyvhhRze5n7.TNCGeVeKZIikCRD0jdcmDC5ba1latjJ26ix5OO', 1),
-(5, '', 'nischal@g.com', '$2y$10$5OO2NXCAsLej7wmvZacaXePxG0dn5m2XCK49vi1zk6W3wsSKLn9Gy', 1),
-(6, '', 'a@g.com', '$2y$10$5XIx5C2N4GAwhDbwHunjnendjSfUesyZvC7IvbV1MZLr/YYMvmbiG', 1);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `active`, `email_verified`, `role`) VALUES
+(5, '', 'nischal@g.com', '$2y$10$5OO2NXCAsLej7wmvZacaXePxG0dn5m2XCK49vi1zk6W3wsSKLn9Gy', 1, 0, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `helps`
+--
+ALTER TABLE `helps`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `helps_category`
+--
+ALTER TABLE `helps_category`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `session_token`
@@ -79,16 +118,28 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `helps`
+--
+ALTER TABLE `helps`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `helps_category`
+--
+ALTER TABLE `helps_category`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `session_token`
 --
 ALTER TABLE `session_token`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'User Id', AUTO_INCREMENT=7;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'User Id', AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
