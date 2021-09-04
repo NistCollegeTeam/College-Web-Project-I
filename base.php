@@ -13,8 +13,9 @@
 </head>
 
 <body>
-    <?php include("./nav.php") ?>
+    <?php include("./partials/nav.php") ?>
     <div class="container">
+        <?php include './partials/message.php'; ?>
 
     </div>
 

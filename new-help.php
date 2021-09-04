@@ -34,11 +34,9 @@ endif;
 </head>
 
 <body>
-    <?php
-    include "./nav.php"
-    ?>
+    <?php include("./partials/nav.php") ?>
     <div class="container">
-        <?php include 'message.php'; ?>
+        <?php include './partials/message.php'; ?>
         <div class="title">
             <h1>Create New Help</h1>
         </div>

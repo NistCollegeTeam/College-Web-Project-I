@@ -20,9 +20,9 @@ endif
 </head>
 
 <body>
-    <?php include("./nav.php") ?>
+    <?php include("./partials/nav.php") ?>
     <div class="container">
-        <?php include 'message.php'; ?>
+        <?php include './partials/message.php'; ?>
         <div class="form-container">
             <div class="form-center-on-container">
                 <h2>Register</h2>
