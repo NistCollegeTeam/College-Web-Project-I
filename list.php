@@ -34,137 +34,25 @@ include './includes/function.php';
                 </form>
             </div>
             <div class="helplist-container" autofocus>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
+                <?php
+                $limit = $_GET['limit'] ? $_GET['limit'] : 10;
+                $offset = $_GET['offset'] ? $_GET['offset'] : 0;
+                $helps = getHelps($limit, $offset);
+                while ($help = mysqli_fetch_array($helps)) {
+                    echo "
+                    <div class='help-item'>
+                        <div class='help-title'>
+                            <h4>" . $help['title'] . "</h4>
+                        </div>
+                        <div class='help-description'>
+                            <p>" . $help['description'] . "</p>
+                        </div>
+                        <div class='help-meta'> -" . $help['location'] . "</div>
                     </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
-                <div class="help-item">
-                    <div class="help-title">
-                        <h4>Help needed</h4>
-                    </div>
-                    <div class="help-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quo eveniet harum, omnis repellat facilis impedit neque laborum? Minima, temporibus nostrum iure vel suscipit praesentium dicta expedita quidem similique facere?
-                        </p>
-                    </div>
-                    <div class="help-meta">
-                        - From Kathmandu
-                    </div>
-                </div>
+                    ";
+                }
 
+                ?>
             </div>
         </div>
 

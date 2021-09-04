@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 02, 2021 at 08:41 PM
+-- Generation Time: Sep 04, 2021 at 01:29 PM
 -- Server version: 8.0.26-0ubuntu0.20.04.2
 -- PHP Version: 7.4.3
 
@@ -34,8 +34,20 @@ CREATE TABLE `helps` (
   `description` text NOT NULL,
   `location` varchar(255) NOT NULL,
   `contact` int NOT NULL,
-  `helper_id` int UNSIGNED NOT NULL
+  `helper_id` int UNSIGNED NOT NULL,
+  `category` int UNSIGNED DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `active` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `helps`
+--
+
+INSERT INTO `helps` (`id`, `title`, `description`, `location`, `contact`, `helper_id`, `category`, `created_at`, `active`) VALUES
+(2, 'First Help', 'Ge', 'ktm', 98, 5, 1, '2021-09-04 12:38:21', 1),
+(3, 'First Help', 'momo', 'mo', 98, 5, 2, '2021-09-04 12:38:21', 1),
+(4, 'Timestan', 'tim3e', 'bkt', 89, 5, 1, '2021-09-04 12:38:45', 1);
 
 -- --------------------------------------------------------
 
@@ -48,6 +60,14 @@ CREATE TABLE `helps_category` (
   `name` varchar(256) NOT NULL,
   `description` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `helps_category`
+--
+
+INSERT INTO `helps_category` (`id`, `name`, `description`) VALUES
+(1, 'Food', NULL),
+(2, 'Clothing', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,7 +102,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `active`, `email_verified`, `role`) VALUES
-(5, '', 'nischal@g.com', '$2y$10$5OO2NXCAsLej7wmvZacaXePxG0dn5m2XCK49vi1zk6W3wsSKLn9Gy', 1, 0, 0);
+(1, '', 'nischal@g.com', '$2y$10$5OO2NXCAsLej7wmvZacaXePxG0dn5m2XCK49vi1zk6W3wsSKLn9Gy', 1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -121,13 +141,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `helps`
 --
 ALTER TABLE `helps`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `helps_category`
 --
 ALTER TABLE `helps_category`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `session_token`

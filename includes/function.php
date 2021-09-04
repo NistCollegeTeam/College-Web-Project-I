@@ -35,7 +35,6 @@ function authenticate($email = NULL, $password = NULL)
     $sql->bind_param('s', $email);
     $sql->execute();
     $result = $sql->get_result();
-    echo $_POST['email'];
     if ($result->num_rows === 0) :
         $_SESSION['message'] = array('type' => 'danger', 'msg' => 'User with given email not found.');
     else :
@@ -81,4 +80,42 @@ function isAdminUser()
     else :
         return false;
     endif;
+}
+
+function getHelpCategories()
+{
+    global $conn;
+    $sql = $conn->prepare('SELECT * from helps_category');
+    $sql->execute();
+    $categories = $sql->get_result();
+    $sql->close();
+    return $categories;
+}
+
+function getHelps($limit = NULL, $offset = NULL)
+{
+    global $conn;
+    $lim = $limit !== NULL ? $limit : 10;
+    $off = $offset !== NULL ? $offset : 0;
+    $active = 1;
+    $sql = $conn->prepare('SELECT * FROM `helps` WHERE `active` = ? ORDER BY `id` DESC LIMIT ? OFFSET ?');
+    $sql->bind_param('iii', $active, $lim, $off);
+    $sql->execute();
+    $helps = $sql->get_result();
+    $sql->close();
+    return $helps;
+}
+
+/* create help */
+function createHelp($title = NULL, $description = NULL, $location = NULL, $contact = NULL, $category = NULL)
+{
+    global $conn;
+    $sql = $conn->prepare('INSERT INTO helps (title, description, location, contact, helper_id, category) VALUES (?, ?, ?, ?, ? , ?)');
+    $sql->bind_param('sssiii', $title, $description, $location, $contact, $_SESSION['user']['id'], $category);
+    $sql->execute();
+    $sql->close();
+    $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have created new help!');
+    header('Location: /');
+    // header('Location: update.php?id=' . $mysqli->insert_id);
+    // exit();
 }

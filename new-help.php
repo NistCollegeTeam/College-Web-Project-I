@@ -5,7 +5,18 @@ if (isAuthenticated() === false) :
     header('Location: /login.php');
 endif;
 if (isset($_POST['post_help'])) :
-
+    $title = $_POST['title'];
+    $description = $_POST['description'];;
+    $location = $_POST['location'];
+    $contact = $_POST['contact'];
+    $category = $_POST['category'];
+    createHelp(
+        $title,
+        $description,
+        $location,
+        $contact,
+        $category
+    );
 endif;
 ?>
 <!DOCTYPE html>
@@ -43,15 +54,29 @@ endif;
                 </form>
             </div>
             <div class="helplist-container">
-                <form class="help-item" method="post" action="./new-help.php">
+                <form class="help-item" method="post" action="./new-help.php" id='createHelpForm' name='createHelpForm'>
                     <label for="create-help-title">Title:</label><br>
                     <input type="text" placeholder="Help title" id='create-help-title' class='' name="title" required><br>
+
+                    <label for="create-help-category">Help Category:</label><br>
+                    <select id='create-help-categpory' class='' name="category" required>
+                        <?php
+                        $categories = getHelpCategories();
+                        while ($category = mysqli_fetch_array($categories)) {
+                            echo "<option value='" . ($category['id']) . "'>" . ($category['name']) . "</option>";
+                        }
+                        ?>
+                    </select>
+
                     <label for="create-help-description">Description:</label><br>
-                    <textarea name="create-help-description" id="" class=" textarea" placeholder="Description about help..." rows='10' cols='100' name='description' required></textarea><br>
+                    <textarea id="create-help-description" placeholder="Description about help..." rows='10' cols='100' name='description'></textarea><br>
+
                     <label for="create-help-location">Location:</label><br>
                     <input type="text" placeholder="Help location" id='create-help-location' class='' name="location" required><br>
+
                     <label for="create-help-contact">Contact:</label><br>
                     <input type="number" placeholder="Helper contact number" id='create-help-contact' class='' name="contact" required><br>
+
                     <button type="submit" value="submit" name="post_help" class="btn btn-login">Post Help</button>
                 </form>
             </div>
