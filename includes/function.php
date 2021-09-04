@@ -92,19 +92,33 @@ function getHelpCategories()
     return $categories;
 }
 
-function getHelps($limit = NULL, $offset = NULL, $search = NULL)
+function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NULL)
 {
     global $conn;
     $lim = $limit !== NULL ? $limit : 10;
     $off = $offset !== NULL ? $offset : 0;
     $active = 1;
     $search = "%" . $search . "%";
-    $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
-    $sql->bind_param('isii', $active, $search, $lim, $off);
+    if ($category !== "" && $category !== NULL && $category !== 0) {
+        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `category` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql->bind_param('iisii', $active, $category, $search, $lim, $off);
+        $count_sql = $conn->prepare("SELECT COUNT(id) as count FROM `helps` WHERE `active` = ? AND `category` = ? AND `title` LIKE ?");
+        $count_sql->bind_param('iis', $active, $category, $search);
+    } else {
+        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql->bind_param('isii', $active, $search, $lim, $off);
+        $count_sql = $conn->prepare("SELECT COUNT(id) as cou FROM `helps` WHERE `active` = ? AND `title` LIKE ?");
+        $count_sql->bind_param('iis', $active, $search);
+    }
+    $count_sql->execute();
+    $count_sql->get_result();
+    $count = 1;
+    $count_sql->close();
     $sql->execute();
     $helps = $sql->get_result();
     $sql->close();
-    return $helps;
+    $data = array('count' => $count, 'results' => $helps);
+    return $data;
 }
 
 /* create help */

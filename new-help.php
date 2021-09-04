@@ -59,7 +59,7 @@ endif;
                     <input type="text" placeholder="Help title" id='create-help-title' class='' name="title" required><br>
 
                     <label for="create-help-category">Help Category:</label><br>
-                    <select id='create-help-categpory' class='' name="category" required>
+                    <select id='create-help-category' class='' name="category" required>
                         <?php
                         $categories = getHelpCategories();
                         while ($category = mysqli_fetch_array($categories)) {

@@ -24,24 +24,20 @@ include './includes/function.php';
         </div>
         <div class="data-section">
             <div class="sidebar">
-                FILTERS ARE GONNA BE HERE
-                <hr>
-                <form class="search-form">
-                    <?php
-                    echo "<input type='text' name='search' class='search-input' placeholder='Search Helps' value='" . $_GET['search'] . "'>";
-                    ?>
-                    <button class="btn search-btn">
-                        Search
-                    </button>
-                </form>
+                <?php
+                include("partials/search_sidebar.php");
+                ?>
             </div>
             <div class="helplist-container" autofocus>
                 <?php
-                $limit = $_GET['limit'] ? $_GET['limit'] : 10;
-                $offset = $_GET['offset'] ? $_GET['offset'] : 0;
-                $search = $_GET['search'] ? $_GET['search'] : "";
-                $helps = getHelps($limit, $offset, $search);
-                while ($help = mysqli_fetch_array($helps)) {
+                $limit = isset($_GET['limit']) ? $_GET['limit'] : 10;
+                $offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
+                $category = isset($_GET['category']) ? $_GET['category'] : 0;
+                $search = isset($_GET['search']) ? $_GET['search'] : "";
+                $helps = getHelps($limit, $offset, $search, $category);
+                echo ("['count']");
+                echo ($helps['count']);
+                while ($help = mysqli_fetch_array($helps['results'])) {
                     echo "
                     <div class='help-item'>
                         <div class='help-title'>
