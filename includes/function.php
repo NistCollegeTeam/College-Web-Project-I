@@ -92,14 +92,15 @@ function getHelpCategories()
     return $categories;
 }
 
-function getHelps($limit = NULL, $offset = NULL)
+function getHelps($limit = NULL, $offset = NULL, $search = NULL)
 {
     global $conn;
     $lim = $limit !== NULL ? $limit : 10;
     $off = $offset !== NULL ? $offset : 0;
     $active = 1;
-    $sql = $conn->prepare('SELECT * FROM `helps` WHERE `active` = ? ORDER BY `id` DESC LIMIT ? OFFSET ?');
-    $sql->bind_param('iii', $active, $lim, $off);
+    $search = "%" . $search . "%";
+    $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+    $sql->bind_param('isii', $active, $search, $lim, $off);
     $sql->execute();
     $helps = $sql->get_result();
     $sql->close();

@@ -27,7 +27,9 @@ include './includes/function.php';
                 FILTERS ARE GONNA BE HERE
                 <hr>
                 <form class="search-form">
-                    <input type="text" name="search" class="search-input" placeholder="Search Helps">
+                    <?php
+                    echo "<input type='text' name='search' class='search-input' placeholder='Search Helps' value='" . $_GET['search'] . "'>";
+                    ?>
                     <button class="btn search-btn">
                         Search
                     </button>
@@ -37,7 +39,8 @@ include './includes/function.php';
                 <?php
                 $limit = $_GET['limit'] ? $_GET['limit'] : 10;
                 $offset = $_GET['offset'] ? $_GET['offset'] : 0;
-                $helps = getHelps($limit, $offset);
+                $search = $_GET['search'] ? $_GET['search'] : "";
+                $helps = getHelps($limit, $offset, $search);
                 while ($help = mysqli_fetch_array($helps)) {
                     echo "
                     <div class='help-item'>

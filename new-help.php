@@ -66,10 +66,10 @@ endif;
                             echo "<option value='" . ($category['id']) . "'>" . ($category['name']) . "</option>";
                         }
                         ?>
-                    </select>
+                    </select><br>
 
                     <label for="create-help-description">Description:</label><br>
-                    <textarea id="create-help-description" placeholder="Description about help..." rows='10' cols='100' name='description'></textarea><br>
+                    <textarea id="create-help-description" placeholder="Description about help..." rows='10' cols='100' name='description' class='textarea'></textarea><br>
 
                     <label for="create-help-location">Location:</label><br>
                     <input type="text" placeholder="Help location" id='create-help-location' class='' name="location" required><br>
