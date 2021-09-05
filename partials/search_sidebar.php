@@ -4,11 +4,11 @@
     <form class="search-form">
         <?php
         echo "
-        <label for='search'>Search Helps:</label>
-        <input type='text' name='search' class='search-input' placeholder='Search Helps' value='" . $_GET['search'] . "'>
-        <label for='category'>Select Category:</label>
-        <select id='create-help-category' class='search-input' name='category' value='" . $_GET['category'] . "'>
-        <option value=''>All Categories</option>";
+            <label for='search'>Search Helps:</label>
+                <input type='text' name='search' class='search-input' placeholder='Search Helps' value='" . $_GET['search'] . "'>
+            <label for='category'>Select Category:</label>
+            <select id='create-help-category' class='search-input' name='category' value='" . $_GET['category'] . "'>
+            <option value=''>All Categories</option>";
         $categories = getHelpCategories();
         while ($category = mysqli_fetch_array($categories)) {
             $selected = $category['id'] == $_GET['category'] ? "selected" : "";

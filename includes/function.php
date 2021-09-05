@@ -107,17 +107,15 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
     } else {
         $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('isii', $active, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as cou FROM `helps` WHERE `active` = ? AND `title` LIKE ?");
-        $count_sql->bind_param('iis', $active, $search);
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `title` LIKE ?");
+        $count_sql->bind_param('is', $active, $search);
     }
     $count_sql->execute();
-    $count_sql->get_result();
-    $count = 1;
     $count_sql->close();
     $sql->execute();
     $helps = $sql->get_result();
     $sql->close();
-    $data = array('count' => $count, 'results' => $helps);
+    $data = array('count' => 1, 'results' => $helps);
     return $data;
 }
 
