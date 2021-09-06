@@ -102,7 +102,7 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
     if ($category !== "" && $category !== NULL && $category !== 0) {
         $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `category` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('iisii', $active, $category, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as count FROM `helps` WHERE `active` = ? AND `category` = ? AND `title` LIKE ?");
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `category` = ? AND `title` LIKE ?");
         $count_sql->bind_param('iis', $active, $category, $search);
     } else {
         $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
@@ -111,11 +111,12 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
         $count_sql->bind_param('is', $active, $search);
     }
     $count_sql->execute();
+    $count = mysqli_fetch_assoc($count_sql->get_result());
     $count_sql->close();
     $sql->execute();
     $helps = $sql->get_result();
     $sql->close();
-    $data = array('count' => 1, 'results' => $helps);
+    $data = array('count' => $count['total'], 'results' => $helps);
     return $data;
 }
 
@@ -131,4 +132,16 @@ function createHelp($title = NULL, $description = NULL, $location = NULL, $conta
     header('Location: /');
     // header('Location: update.php?id=' . $mysqli->insert_id);
     // exit();
+}
+
+function paginate($limit = NULL, $offset = NULL, $count = NULL)
+{
+    if ($offset > 0) :
+        $prev_offset = $offset - $limit;
+        echo "<a class='btn' href='/list.php?offset=" . $prev_offset . "&limit=" . $limit . "'>Previous </a>";
+    endif;
+    if ($limit + $offset < $count) :
+        $next_offset = $offset + $limit;
+        echo "<a class='btn' href='/list.php?offset=" . $next_offset . "&limit=" . $limit . "'>Next</a>";
+    endif;
 }

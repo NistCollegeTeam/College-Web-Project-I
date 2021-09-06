@@ -3,15 +3,16 @@
     <hr>
     <form class="search-form">
         <?php
+        $input_value = isset($_GET['search']) ? $_GET['search'] : "";
         echo "
             <label for='search'>Search Helps:</label>
-                <input type='text' name='search' class='search-input' placeholder='Search Helps' value='" . $_GET['search'] . "'>
+                <input type='text' name='search' class='search-input' placeholder='Search Helps' value='" . $input_value . "'>
             <label for='category'>Select Category:</label>
-            <select id='create-help-category' class='search-input' name='category' value='" . $_GET['category'] . "'>
+            <select id='create-help-category' class='search-input' name='category'>
             <option value=''>All Categories</option>";
         $categories = getHelpCategories();
         while ($category = mysqli_fetch_array($categories)) {
-            $selected = $category['id'] == $_GET['category'] ? "selected" : "";
+            $selected = (isset($_GET['category']) && $category['id'] == $_GET['category']) ? "selected" : "";
             echo "<option value='" . ($category['id']) . "'" . $selected . ">" . ($category['name']) . "</option>";
         }
         echo "</select><br>";

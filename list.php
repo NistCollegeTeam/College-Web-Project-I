@@ -30,13 +30,11 @@ include './includes/function.php';
             </div>
             <div class="helplist-container" autofocus>
                 <?php
-                $limit = isset($_GET['limit']) ? $_GET['limit'] : 10;
-                $offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
-                $category = isset($_GET['category']) ? $_GET['category'] : 0;
-                $search = isset($_GET['search']) ? $_GET['search'] : "";
+                $limit = (isset($_GET['limit']) && $_GET['limit'] != null) ? $_GET['limit'] : 1;
+                $offset = (isset($_GET['offset']) && $_GET['offset'] != null) ? $_GET['offset'] : 0;
+                $category = (isset($_GET['category']) && $_GET['category'] != null) ? $_GET['category'] : 0;
+                $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
                 $helps = getHelps($limit, $offset, $search, $category);
-                echo ("['count']");
-                echo ($helps['count']);
                 while ($help = mysqli_fetch_array($helps['results'])) {
                     echo "
                     <div class='help-item'>
@@ -50,7 +48,9 @@ include './includes/function.php';
                     </div>
                     ";
                 }
-
+                echo "<hr>";
+                $count = $helps['count'];
+                paginate($limit, $offset, $count);
                 ?>
             </div>
         </div>
