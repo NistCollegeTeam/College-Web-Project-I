@@ -101,14 +101,14 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
     $active = 1;
     $search = "%" . $search . "%";
     if ($category !== "" && $category !== NULL && $category !== 0) {
-        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `category` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `category` = ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('iisii', $active, $category, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `category` = ? AND `title` LIKE ?");
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `category` = ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
         $count_sql->bind_param('iis', $active, $category, $search);
     } else {
-        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `title` LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('isii', $active, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `title` LIKE ?");
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
         $count_sql->bind_param('is', $active, $search);
     }
     $count_sql->execute();

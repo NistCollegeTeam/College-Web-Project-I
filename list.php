@@ -48,7 +48,6 @@ include './includes/function.php';
                     </div>
                     ";
                 }
-                echo "<hr>";
                 $count = $helps['count'];
                 echo (paginate($limit, $offset, $count, $category, $search));
                 ?>
