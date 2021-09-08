@@ -35,22 +35,22 @@ if (isset($_POST['submitBtn'])) {
                 <hr><br>
                 <form action="./password_change.php" method="post" class="">
                     <div class="form-item">
-                        <label for="old_password">Old Password:</label>
-                        <input type="password" name="old_password" id="old_password" placeholder="your-old-password" required>
+                        <label for="old_password">Old Password:</label><br>
+                        <input type="password" name="old_password" id="old_password" placeholder="your-old-password" required><br>
                         <small id='old_password-error' class='text-error'></small>
                     </div>
                     <div class="form-item">
-                        <label for="password">New Password:</label>
-                        <input type="password" name="password" id="password" placeholder="your-new-password" required>
+                        <label for="password">New Password:</label><br>
+                        <input type="password" name="password" id="password" placeholder="your-new-password" required><br>
                         <small id='password-error' class='text-error'></small>
                     </div>
                     <div class="form-item">
-                        <label for="password">Confirm New Password:</label>
-                        <input type="password" name="password2" id="password2" placeholder="your-new-password-again" required>
+                        <label for="password">Confirm New Password:</label><br>
+                        <input type="password" name="password2" id="password2" placeholder="your-new-password-again" required><br>
                         <small id='password2-error' class='text-error'></small>
                     </div><br>
                     <div class="form-item">
-                        <button type="submit" class="btn btn-login" name='submitBtn'>Change Password</button>
+                        <button type="submit" class="btn btn-login" id='submitBtn' name='submitBtn' disabled>Change Password</button>
                     </div>
                 </form>
             </div>
@@ -61,6 +61,26 @@ if (isset($_POST['submitBtn'])) {
 
 
     <script src="./scripts/nav.js"></script>
+    <script>
+        const password1 = document.querySelector("#password");
+        const password2 = document.querySelector("#password2");
+        const password2_error = document.querySelector("#password2-error");
+        const submitBtn = document.querySelector("#submitBtn");
+
+        function PasswordValidator() {
+            if (password1.value !== password2.value || password1.value == "" || password2.value == "") {
+                password2.classList.add('invalid');
+                password2_error.innerHTML = "Both password must match!";
+                submitBtn.setAttribute('disabled', true)
+            } else {
+                password2.classList.remove('invalid');
+                password2_error.innerHTML = "";
+                submitBtn.removeAttribute('disabled')
+            }
+        }
+        password1.addEventListener('keyup', PasswordValidator);
+        password2.addEventListener('keyup', PasswordValidator);
+    </script>
 </body>
 
 </html>

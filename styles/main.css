@@ -12,6 +12,7 @@
   padding: 0px;
   margin: 0px;
   font-family: Poppins;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -35,7 +36,7 @@
 }
 
 .container {
-  padding: 13vh 10rem 1vh 10rem;
+  padding: 100px 10rem 0px 10rem;
 }
 .btn {
   border: 0.1rem solid #a8a8a8;
@@ -64,6 +65,7 @@ input:focus,
 .input,
 input {
   min-height: 3em;
+  width: 100%;
   border-radius: 5px;
   border: 0.1em solid rgb(131, 122, 122);
   padding: 0px 1em 0px 1em;
@@ -96,11 +98,12 @@ body {
 }
 
 .form-center-on-container {
-  padding: 5vh 5vw;
+  padding: 20px 50px;
   background-color: white;
   border-radius: 5px;
   margin: auto;
-  max-width: min-content;
+  min-width: 400px;
+  max-width: max-content;
 }
 
 .form-container {

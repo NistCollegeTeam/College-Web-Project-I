@@ -29,18 +29,18 @@ endif
                 <hr><br>
                 <form action="./register.php" method="post" class="">
                     <div class="form-item">
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" placeholder="example@email.com" autofocus required>
+                        <label for="email">Email:</label><br>
+                        <input type="email" name="email" id="email" placeholder="example@email.com" autofocus required><br>
                         <!-- <small class='text-error'>Email not verified!</small> -->
                     </div>
                     <div class="form-item">
-                        <label for="password1">Password:</label>
-                        <input type="password" name="password" id="password1" placeholder="your-password" required>
+                        <label for="password1">Password:</label><br>
+                        <input type="password" name="password" id="password1" placeholder="your-password" required><br>
                         <small id='password1-error' class='text-error'></small>
                     </div>
                     <div class="form-item">
-                        <label for="password2">Confirm Password:</label>
-                        <input type="password" name="password2" id="password2" placeholder="your-password-again" required>
+                        <label for="password2">Confirm Password:</label><br>
+                        <input type="password" name="password2" id="password2" placeholder="your-password-again" required><br>
                         <small id='password2-error' class='text-error'></small>
                     </div>
                     <br>
@@ -64,7 +64,7 @@ endif
         const register_btn = document.querySelector("#registerBtn");
 
         function PasswordValidator() {
-            if (password1.value !== password2.value) {
+            if (password1.value !== password2.value || password1.value == "" || password2.value == "") {
                 password2.classList.add('invalid');
                 password2_error.innerHTML = "Both password must match!";
                 register_btn.setAttribute('disabled', true)

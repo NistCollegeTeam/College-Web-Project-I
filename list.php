@@ -30,7 +30,7 @@ include './includes/function.php';
             </div>
             <div class="helplist-container" autofocus>
                 <?php
-                $limit = (isset($_GET['limit']) && $_GET['limit'] != null) ? $_GET['limit'] : 1;
+                $limit = (isset($_GET['limit']) && $_GET['limit'] != null) ? $_GET['limit'] : 10;
                 $offset = (isset($_GET['offset']) && $_GET['offset'] != null) ? $_GET['offset'] : 0;
                 $category = (isset($_GET['category']) && $_GET['category'] != null) ? $_GET['category'] : NULL;
                 $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
