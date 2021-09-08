@@ -32,7 +32,7 @@ include './includes/function.php';
                 <?php
                 $limit = (isset($_GET['limit']) && $_GET['limit'] != null) ? $_GET['limit'] : 1;
                 $offset = (isset($_GET['offset']) && $_GET['offset'] != null) ? $_GET['offset'] : 0;
-                $category = (isset($_GET['category']) && $_GET['category'] != null) ? $_GET['category'] : 0;
+                $category = (isset($_GET['category']) && $_GET['category'] != null) ? $_GET['category'] : NULL;
                 $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
                 $helps = getHelps($limit, $offset, $search, $category);
                 while ($help = mysqli_fetch_array($helps['results'])) {
@@ -50,7 +50,7 @@ include './includes/function.php';
                 }
                 echo "<hr>";
                 $count = $helps['count'];
-                paginate($limit, $offset, $count);
+                echo (paginate($limit, $offset, $count, $category, $search));
                 ?>
             </div>
         </div>

@@ -134,14 +134,17 @@ function createHelp($title = NULL, $description = NULL, $location = NULL, $conta
     // exit();
 }
 
-function paginate($limit = NULL, $offset = NULL, $count = NULL)
+function paginate($limit, $offset, $count, $category, $search)
 {
+    $text = "";
+    $static_query = "&limit=" . $limit . "&category=" . $category . "&search=" . $search;
     if ($offset > 0) :
         $prev_offset = $offset - $limit;
-        echo "<a class='btn' href='/list.php?offset=" . $prev_offset . "&limit=" . $limit . "'>Previous </a>";
+        $text .= "<a class='btn' href='/list.php?offset=" . $prev_offset . $static_query . "' >Previous </a>";
     endif;
     if ($limit + $offset < $count) :
         $next_offset = $offset + $limit;
-        echo "<a class='btn' href='/list.php?offset=" . $next_offset . "&limit=" . $limit . "'>Next</a>";
+        $text .= "<a class='btn' href='/list.php?offset=" . $next_offset . $static_query . "'>Next</a>";
     endif;
+    return $text;
 }
