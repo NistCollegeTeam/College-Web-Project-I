@@ -17,8 +17,8 @@ include './includes/function.php';
 <body>
     <?php include("./partials/nav.php") ?>
     <div class="container">
-        <?php include './partials/message.php'; ?>
         <h1>Sharing Is Caring</h1>
+        <?php include './partials/message.php'; ?>
         <div class="youtube">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/Un9BVWXVMG4?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>

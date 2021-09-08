@@ -52,6 +52,7 @@ function authenticate($email = NULL, $password = NULL)
         }
     endif;
     $sql->close();
+    header("Location :/list.php");
 }
 /* logout function */
 function logout()
@@ -147,4 +148,37 @@ function paginate($limit, $offset, $count, $category, $search)
         $text .= "<a class='btn' href='/list.php?offset=" . $next_offset . $static_query . "'>Next</a>";
     endif;
     return $text;
+}
+
+/* login function */
+function changePassword($user_id, $old_password, $password1, $password2)
+{
+    global $conn;
+    if ($password1 !== $password2) {
+        $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Both password do not match!');
+        return;
+    }
+    $sql = $conn->prepare("SELECT * FROM user WHERE id = ? AND active = 1");
+    $sql->bind_param('i', $user_id);
+    $sql->execute();
+    $result = $sql->get_result();
+    $sql->close();
+    if ($result->num_rows !== 0) :
+        while ($row = $result->fetch_assoc()) {
+            $hash = $row['password'];
+            if (password_verify($old_password, $hash) == true) :
+                $password_change_sql = $conn->prepare("UPDATE user SET `password`=? WHERE id=? ");
+                $password_change_sql->bind_param("si", password_hash($password1, PASSWORD_DEFAULT), $user_id);
+                $password_change_sql->execute();
+                if ($password_change_sql->affected_rows === 0) :
+                    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'An unknown error occoured. Please try again later.');
+                else :
+                    $_SESSION['message'] = array('type' => 'success', 'msg' => 'User password successfully changed!');
+                endif;
+                $password_change_sql->close();
+            else :
+                $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Your old password is incorrect. Please try again.');
+            endif;
+        }
+    endif;
 }
