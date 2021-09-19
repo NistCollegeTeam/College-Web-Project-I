@@ -36,27 +36,24 @@ include './includes/function.php';
                 $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
                 $helps = getHelps($limit, $offset, $search, $category);
                 while ($help = mysqli_fetch_array($helps['results'])) {
-                    echo "
+                ?>
                     <div class='help-item'>
                         <div class='help-title'>
-                            <h4>" . $help['title'] . "</h4>
+                            <h4><?= $help['title'] ?></h4>
                         </div>
                         <div class='help-description'>
-                            <p>" . $help['description'] . "</p>
+                            <p><?= $help['description'] ?></p>
                         </div>
-                        <div class='help-meta'> -" . $help['location'] . "</div>
+                        <div class='help-meta'> -<?= $help['location'] ?>"</div>
                     </div>
-                    ";
+                <?php
                 }
                 $count = $helps['count'];
                 echo (paginate($limit, $offset, $count, $category, $search));
                 ?>
             </div>
         </div>
-
     </div>
-
-
 
     <script src="./scripts/nav.js"></script>
 </body>

@@ -50,6 +50,10 @@ nav a {
 .nav-link {
   padding: 5px;
 }
+.nav-link:hover {
+  background-color: var(--secondary);
+  border-radius: 5px;
+}
 .nav-btn {
   padding: 1vh;
   text-align: center;

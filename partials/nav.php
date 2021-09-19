@@ -31,7 +31,7 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="password_change.php" class='nav-link'>
+                <a href="password_change.php" class=''>
                     <img src="./public/avatar.jpeg" alt="" srcset="" class='avatar'>
                 </a>
             </div>
