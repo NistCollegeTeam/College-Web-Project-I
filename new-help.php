@@ -3,6 +3,7 @@ include "./includes/function.php";
 if (isAuthenticated() === false) :
     $_SESSION['message'] = array('type' => 'success', 'msg' => 'Please Login to Continue!');
     header('Location: /login.php');
+    exit();
 endif;
 if (isset($_POST['post_help'])) :
     $title = $_POST['title'];
@@ -57,17 +58,19 @@ endif;
                     <input type="text" placeholder="Help title" id='create-help-title' class='' name="title" required><br>
 
                     <label for="create-help-category">Help Category:</label><br>
-                    <select id='create-help-category' class='' name="category" required>
+                    <select id='create-help-category' class='input' name="category" required>
                         <?php
                         $categories = getHelpCategories();
                         while ($category = mysqli_fetch_array($categories)) {
-                            echo "<option value='" . ($category['id']) . "'>" . ($category['name']) . "</option>";
+                        ?>
+                            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                        <?php
                         }
                         ?>
                     </select><br>
 
                     <label for="create-help-description">Description:</label><br>
-                    <textarea id="create-help-description" placeholder="Description about help..." rows='10' cols='125' name='description' class='textarea' required></textarea><br>
+                    <textarea id="create-help-description" placeholder="Description about help..." name='description' class='textarea' required></textarea><br>
 
                     <label for="create-help-location">Location:</label><br>
                     <input type="text" placeholder="Help location" id='create-help-location' class='' name="location" required><br>

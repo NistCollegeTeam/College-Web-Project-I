@@ -3,6 +3,7 @@ nav {
   padding: 1vh 2vw;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 1);
+  /* background-color: rgb(195, 46, 232); */
   z-index: 1;
   position: fixed;
   top: 0;
@@ -23,9 +24,12 @@ nav a {
 
 .logo {
   cursor: pointer;
-  padding: 0.5vh 8px;
+  padding: 0px;
   margin-top: auto;
   margin-bottom: auto;
+  margin-right: 5px;
+  background-color: white;
+  border-radius: 100%;
 }
 
 .nav-title {

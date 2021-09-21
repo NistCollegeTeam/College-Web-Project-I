@@ -11,7 +11,7 @@
   --primary-btn-active: #6a32aa;
   padding: 0px;
   margin: 0px;
-  font-family: Poppins;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
 }
 
@@ -73,6 +73,7 @@ input {
 
 body {
   background: rgb(195, 46, 232);
+  /* background-color: rgba(30, 65, 16, 0.452); */
   /* background: linear-gradient(
     139deg,
     rgba(195, 46, 232, 1) 0%,
@@ -82,12 +83,12 @@ body {
 }
 
 .textarea {
-  min-height: 30px;
+  min-height: 100px;
   max-height: 10vh;
   border-radius: 5px;
   margin: auto;
   border: 0.1em solid rgb(131, 122, 122);
-  width: -moz-available;
+  width: 100%;
   padding: 0px 10px 0px 10px;
 }
 
@@ -157,4 +158,11 @@ body {
 .invalid {
   border-color: var(--primary-red) !important;
   background-color: var(--secondary-red) !important;
+}
+
+hr {
+  border: none;
+  background: rgb(47, 46, 46);
+  height: 1px;
+  margin: 2px 0px;
 }

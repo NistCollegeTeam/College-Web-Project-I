@@ -55,7 +55,6 @@ function authenticate($email = NULL, $password = NULL)
         }
     endif;
     $sql->close();
-    header("Location :/list.php");
 }
 /* logout function */
 function logout()
@@ -113,6 +112,43 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
         $sql->bind_param('isii', $active, $search, $lim, $off);
         $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
         $count_sql->bind_param('is', $active, $search);
+    }
+    $count_sql->execute();
+    $count = mysqli_fetch_assoc($count_sql->get_result());
+    $count_sql->close();
+    $sql->execute();
+    $helps = $sql->get_result();
+    $sql->close();
+    $data = array('count' => $count['total'], 'results' => $helps);
+    return $data;
+}
+
+function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category = NULL, $user_id = NULL)
+{
+    if (!isset($user_id)) {
+        try {
+            $user_id = $_SESSION['user']['id'];
+        } catch (Throwable $throwable) {
+            $_SESSION['message'] = array('type' => 'danger', 'msg' => 'No users Provided!😟');
+            header("Location: /");
+            exit();
+        }
+    }
+    global $conn;
+    $lim = $limit !== NULL ? $limit : 10;
+    $off = $offset !== NULL ? $offset : 0;
+    $active = 1;
+    $search = "%" . $search . "%";
+    if ($category !== "" && $category !== NULL && $category !== 0) {
+        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql->bind_param('iiisii', $active, $category, $user_id, $search, $lim, $off);
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
+        $count_sql->bind_param('iiis', $active, $category, $user_id, $search);
+    } else {
+        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql->bind_param('iisii', $active, $user_id, $search, $lim, $off);
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
+        $count_sql->bind_param('iis', $active, $user_id, $search);
     }
     $count_sql->execute();
     $count = mysqli_fetch_assoc($count_sql->get_result());
