@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  padding: 1vh 2vw;
+  padding: 0px 10px;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 1);
   /* background-color: rgb(195, 46, 232); */
@@ -15,7 +15,6 @@ nav {
 }
 nav a {
   text-decoration: none;
-  color: black;
 }
 .nav-site-title {
   display: flex;
@@ -45,14 +44,17 @@ nav a {
   display: flex;
 }
 .nav-item {
+  margin: 0px 5px;
   padding: 1vh 2vw;
   text-align: center;
   top: 30%;
   margin-top: auto;
   margin-bottom: auto;
+  border-radius: 10px;
 }
 .nav-link {
   padding: 5px;
+  color: black;
 }
 .nav-btn {
   padding: 1vh;
@@ -81,4 +83,15 @@ nav a {
   .hamburger {
     display: inline;
   }
+}
+
+.nav-item:hover {
+  background: var(--secondary);
+}
+
+.nav-item + .active {
+  background: var(--primary);
+}
+.nav-item + .active > :nth-child(1) {
+  color: white !important;
 }

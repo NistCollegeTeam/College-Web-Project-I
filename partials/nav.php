@@ -1,15 +1,13 @@
 <nav>
     <div class="nav-site-title">
-        <div class="">
-            <a href="/" class="nav-site-title">
-                <div class="logo">
-                    <?php
-                    include './public/logo.svg'
-                    ?>
-                </div>
-                <div class="nav-title">Sharing is Caring</div>
-            </a>
-        </div>
+        <a href="/" class="nav-site-title">
+            <div class="logo">
+                <?php
+                include './public/logo.svg'
+                ?>
+            </div>
+            <div class="nav-title">Sharing is Caring</div>
+        </a>
         <div class="hamburger btn">
             =
         </div>

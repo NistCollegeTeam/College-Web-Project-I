@@ -123,6 +123,27 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
     return $data;
 }
 
+function getHelpById($help_id = NULL, $owner = NULL)
+{
+    global $conn;
+    if ($help_id !== "" && $help_id !== NULL && $help_id !== 0) {
+        if ($owner == NULL) {
+            $sql = $conn->prepare("SELECT * FROM `helps` WHERE `id` = ?");
+            $sql->bind_param('i', $help_id);
+        } else {
+            print $owner;
+            $sql = $conn->prepare("SELECT * FROM `helps` WHERE `id` = ? AND `helper_id` = ?");
+            $sql->bind_param('ii', $help_id, $owner);
+        }
+        $sql->execute();
+        $help = $sql->get_result();
+        $sql->close();
+        return $help;
+    } else {
+        return NULL;
+    }
+}
+
 function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category = NULL, $user_id = NULL)
 {
     if (!isset($user_id)) {
@@ -169,9 +190,43 @@ function createHelp($title = NULL, $description = NULL, $location = NULL, $conta
     $sql->execute();
     $sql->close();
     $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have created new help!');
-    header('Location: /');
+    header('Location: /my-helps.php');
     // header('Location: update.php?id=' . $mysqli->insert_id);
     // exit();
+}
+
+/* update help */
+function updateHelp($id = NULL, $title = NULL, $description = NULL, $location = NULL, $contact = NULL, $category = NULL)
+{
+    global $conn;
+    $sql = $conn->prepare('UPDATE `helps` SET title= ?, description= ?, location= ?, contact= ?, category= ? WHERE id= ?');
+    $sql->bind_param('sssiii', $title, $description, $location, $contact, $category, $id);
+    $sql->execute();
+    if ($sql->affected_rows === 0) :
+        $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Error updating help!');
+    else :
+        $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully update the selected help.');
+    endif;
+    $sql->close();
+    header('Location: /my-helps.php');
+    // header('Location: update.php?id=' . $mysqli->insert_id);
+    exit();
+}
+function deleteHelp($id = NULL)
+{
+    global $conn;
+    $sql = $conn->prepare('DELETE FROM `helps` WHERE id= ?');
+    $sql->bind_param('i', $id);
+    $sql->execute();
+    if ($sql->affected_rows === 0) :
+        $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Error deleting help!');
+    else :
+        $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully deleted the selected help.');
+    endif;
+    $sql->close();
+    header('Location: /my-helps.php');
+    // header('Location: update.php?id=' . $mysqli->insert_id);
+    exit();
 }
 
 function paginate($limit, $offset, $count, $category, $search)

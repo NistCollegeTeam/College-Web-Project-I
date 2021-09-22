@@ -1,10 +1,6 @@
 <?php
 include "./includes/function.php";
-if (isAuthenticated() === false) :
-    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Please Login to Continue!');
-    header('Location: /login.php');
-    exit();
-endif;
+include "./includes/authentication_required.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +20,9 @@ endif;
     <?php include("./partials/nav.php") ?>
     <div class="container">
         <?php include './partials/message.php'; ?>
-        <h1>My helps</h1>
-        <hr>
+        <div class="title">
+            <h1>My helps</h1>
+        </div>
         <div class="data-section">
             <div class="sidebar">
                 <?php
@@ -49,6 +46,8 @@ endif;
                             <p>" . $help['description'] . "</p>
                         </div>
                         <div class='help-meta'> -" . $help['location'] . "</div>
+                        <a href='./update-help.php?help_id=" . $help['id'] . "' class='btn btn-edit'>Edit</a>
+                        <a href='./delete-help.php?help_id=" . $help['id'] . "' class='btn btn-delete'>Delete</a>
                     </div>
                     ";
                 }

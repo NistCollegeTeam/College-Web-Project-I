@@ -10,6 +10,7 @@ include './includes/function.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/nav.css">
+    <link rel="stylesheet" href="./styles/list.css">
     <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon">
     <title>Sharing is Caring</title>
 </head>
@@ -17,9 +18,11 @@ include './includes/function.php';
 <body>
     <?php include("./partials/nav.php") ?>
     <div class="container">
-        <h1>Sharing Is Caring</h1>
+        <div class="title">
+            <h1>Sharing Is Caring</h1>
+        </div>
         <?php include './partials/message.php'; ?>
-        <div class="youtube">
+        <div class="youtube title">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/Un9BVWXVMG4?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
