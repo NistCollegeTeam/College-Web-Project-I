@@ -38,17 +38,28 @@ endif;
             <h1>Create New Help</h1>
         </div>
         <div class="data-section">
-            <div class="sidebar">
-                I dont know put sth here
-                <hr>
-                <form class="search-form">
-                    <input type="text" name="search" class="search-input" placeholder="Search Helps">
-                    <button class="btn search-btn">
-                        Maybe Search
-                    </button>
-                </form>
+            <div class="render-section">
+                <div class="">
+                    <div class='help-item help-item-card'>
+                        <div class='help-title'>Fill form to see how it looks.🙂</div>
+                        <div class='help-description'></div>
+                        <div class='help-meta help-meta-location'></div>
+                    </div>
+                    <div class='help-item'>
+                        <div class='help-title'>
+                        </div>
+                        <div class='help-description'>
+                        </div>
+                        <div class='help-meta help-meta-category'>
+                        </div>
+                        <div class='help-meta help-meta-contact'>
+                        </div>
+                        <div class='help-meta help-meta-location'>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="helplist-container">
+            <div class="form-section">
                 <form class="help-item" method="post" action="./new-help.php" id='createHelpForm' name='createHelpForm'>
                     <label for="create-help-title">Title:</label><br>
                     <input type="text" placeholder="Help title" id='create-help-title' class='' name="title" required><br>
@@ -77,6 +88,7 @@ endif;
                     <button type="submit" value="submit" name="post_help" class="btn btn-login">Post Help</button>
                 </form>
             </div>
+
         </div>
 
     </div>
@@ -84,6 +96,47 @@ endif;
 
 
     <script src="./scripts/nav.js"></script>
+    <script>
+        const inp_title = document.getElementById("create-help-title");
+        const render_inp_title = document.querySelectorAll(".help-title");
+        inp_title.addEventListener("keyup", function(e) {
+            render_inp_title.forEach(element => {
+                element.innerHTML = `<h4>${inp_title.value}<h4>`;
+            });
+        })
+
+        const inp_desc = document.getElementById("create-help-description");
+        const render_inp_desc = document.querySelectorAll(".help-description");
+        inp_desc.addEventListener("keyup", function(e) {
+            render_inp_desc.forEach(element => {
+                element.innerHTML = `<p>${inp_desc.value}<p>`;
+            });
+        })
+
+        const inp_loc = document.getElementById("create-help-location");
+        const render_inp_loc = document.querySelectorAll(".help-meta-location");
+        inp_loc.addEventListener("keyup", function(e) {
+            render_inp_loc.forEach(element => {
+                element.innerHTML = `Address: ${inp_loc.value}`;
+            });
+        })
+
+        const inp_contact = document.getElementById("create-help-contact");
+        const render_inp_contact = document.querySelectorAll(".help-meta-contact");
+        inp_contact.addEventListener("keyup", function(e) {
+            render_inp_contact.forEach(element => {
+                element.innerHTML = `Contact: ${inp_contact.value}`;
+            });
+        })
+
+        const inp_category = document.getElementById("create-help-category");
+        const render_inp_category = document.querySelectorAll(".help-meta-category");
+        inp_category.addEventListener("change", function(e) {
+            render_inp_category.forEach(element => {
+                element.innerHTML = `Category: ${e.srcElement.options[e.srcElement.options.selectedIndex].text}`;
+            });
+        })
+    </script>
 </body>
 
 </html>

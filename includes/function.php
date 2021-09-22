@@ -208,7 +208,7 @@ function updateHelp($id = NULL, $title = NULL, $description = NULL, $location = 
         $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully update the selected help.');
     endif;
     $sql->close();
-    header('Location: /my-helps.php');
+    header('Location: /update-help.php?help_id=' . $id);
     // header('Location: update.php?id=' . $mysqli->insert_id);
     exit();
 }
@@ -275,4 +275,21 @@ function changePassword($user_id, $old_password, $password1, $password2)
             endif;
         }
     endif;
+}
+
+function echoCategoryName($id = NULL)
+{
+    global $conn;
+    $sql = $conn->prepare("SELECT `name` FROM helps_category WHERE id = ?");
+    $sql->bind_param('i', $id);
+    $sql->execute();
+    $res = $sql->get_result();
+    if ($res->num_rows !== 0) {
+        while ($cat_name = $res->fetch_assoc()) {
+            echo $cat_name['name'];
+        }
+    } else {
+        echo $id;
+    }
+    $sql->close();
 }

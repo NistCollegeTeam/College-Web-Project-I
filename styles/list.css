@@ -23,6 +23,14 @@
   overflow-y: scroll;
   padding: 0px 0px 0px 1rem;
 }
+.form-section {
+  flex: 1 1 50%;
+  min-width: 50%;
+}
+.render-section {
+  min-width: 50%;
+  flex: 1 1 50%;
+}
 .help-item {
   min-height: 10vh;
   background-color: #e1c9fd;
