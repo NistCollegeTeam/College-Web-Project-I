@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/input.css">
+    <title>Donation</title>
+</head>
+<body>
+    <div id="container" >
+        <h1>Donation Form</h1><br><br>
+        <p  style="font-size: 25px; text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">"Think of giving not as a duty but as a privilege"</p>
+        <hr><br><br>
+        
+        <form action="nav.html">
+            <div id="identity" class="uni-padding">
+            <label for="name" style="font-size: 25px;">Name</label> <br> <br>
+            <input type="text" size="72" name="fname" id="fname" style="margin-right: 75px; height: 40px;" placeholder="First Name" required>
+            <input type="text" size="72" name="lname" id="lname" style="height: 40px;" placeholder="Last Name" required>
+            </div> <br><br>
+
+            <div class="uni-padding">
+                <label for="phone" style="font-size: 25px;">Phone Number</label> 
+                <label for="email" style="font-size: 25px; margin-left: 477px;">Email</label>
+                <br> <br>
+                <input type="text" size="72"  style="height: 40px;" name="phone" id="phone" placeholder="Please enter valid number" required>
+                <input type="email" name="email" style="height: 40px; margin-left: 75px;" id="email" size="72" autocomplete="off" placeholder="example@gmail.com" required>
+            </div><br><br>
+
+            <div class="uni-padding">
+                <label for="address" style="font-size: 25px;">Address</label><br><br>
+                <input type="text" name="address" id="address" style="height: 40px;" size="161"> <br><br>
+
+                <label for="state"style="font-size:25px;">State/Province</label>
+                <select name="state" id="state" style="font-size:25px;">
+                    <option value="Province No.1">Province No.1</option>
+                    <option value="Province No.2">Province No.2</option>
+                    <option value="Bagmati">Bagmati</option>
+                    <option value="Gandaki">Gandaki</option>
+                    <option value="Lumbini">Lumbini</option>
+                    <option value="Karnali">Karnali</option>
+                    <option value="Sudurpashchim">Sudurpashchim</option>
+                </select>
+                
+                <label for="district"style="font-size:25px;" class="district">District</label>
+                <select  class="district" name="district" id="district" style="font-size:25px;">
+                    <option value="Kathmandu">Kathmandu</option>
+                    <option value="Bhaktapur">Bhaktapur</option>
+                    <option value="Ramechhap">Ramechhap</option>
+                    <option value="Lalitpur">Lalitpur</option>
+                    <option value="Nuwakot">Nuwakot</option>
+                    <option value="Jhapa">Jhapa</option>
+                    <option value="Ilam">Ilam</option>
+                    <option value="Chitwan">Chitwan</option>
+                    <option value="Syangja">Syangja</option>
+                    <option value="Tanahu">Tanahu</option>
+                    <option value="Ramechhap">Ramechhap</option>
+                    
+                </select>
+                
+            </div><br> <br>
+            <div class="donation">
+                <p style="font-size: 40px;">TYPES OF DONATION</p>
+                
+                <input type="checkbox" name="financial" id="financial" >
+                <label for="financial" class="checkbox" style="margin-right: 100px;">Financial Donation</label>
+
+                <input type="checkbox"  name="clothing" id="clothing" >
+                <label for="clothing"  >Clothing</label><br>
+
+                <input type="checkbox" name="shoes" id="shoes" >
+                <label for="shoes" style="margin-right: 122px;">Shoes and Bags</label>
+
+                <input type="checkbox" name="kitchenware" id="kitchenware" >
+                <label for="kitchenware">Kitchenware</label><br>
+
+                <input type="checkbox" name="books" id="books" >
+                <label for="books" style="margin-right: 182px;">Books</label>
+
+                <input type="checkbox" name="toys" id="toys" >
+                <label for="toys">Toys and Games</label><br>
+
+                <input type="checkbox" name="arts" id="arts" >
+                <label for="arts" style="margin-right: 196px;">Arts</label>
+
+                <input type="checkbox" name="furniture" id="furniture" >
+                <label for="furniture">Furniture</label><br>
+
+                <input type="checkbox" name="hygiene" id="hygiene" >
+                <label for="hygiene" style="margin-right: 101px;">Hygiene Essentials</label>
+
+                <input type="checkbox" name="sports" id="sports" >
+                <label for="sports">Sporting Goods</label><br>
+
+                <input type="checkbox" name="food" id="food" >
+                <label for="food" style="margin-right: 190px;">Food</label>
+
+                <input type="checkbox" name="blood" id="blood" >
+                <label for="blood">Blood</label><br>
+
+                <input type="checkbox" name="room" id="room" >
+                <label for="room" style="margin-right: 188px;">Place</label>
+
+                <input type="checkbox" name="transportation" id="transportation" >
+                <label for="transportation">Transportation</label><br>
+                
+            </div><br><br>
+
+            <div class="uni-padding">
+                <p style="font-size: 25px;">What would you like to donate?</p>
+                <input type="text" name="donate" id="donate"  style="height: 40px;" size="65">
+            </div><br><br>
+            
+            <div class="uni-padding">
+                <p style="font-size: 25px;">Notes</p>
+                <textarea name="" id="" cols="150" rows="6"></textarea>
+            </div>
+            <p style="font-size: 25px; text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">THANK YOU!</p>
+            <hr>
+            <div class="uni-padding" style="text-align: center;">
+                <button class="btn">Confirm</button>
+                <p style="font-size: 25px; text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Remember to check your email for responses !</p>
+            </div>
+        </form>
+    </div>
+
+   
+</body>
+</html>
