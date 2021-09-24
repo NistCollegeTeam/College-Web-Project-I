@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap"); */
 * {
   --primary: #a65bfc;
   --secondary: #c099e8;
@@ -192,4 +192,8 @@ hr {
 .btn-delete:hover {
   background-color: rgb(255, 118, 118);
   box-shadow: 0px 0px 5px #f83131c9, 0 0 5px #f83131c9, 0 0 5px #f83131c9;
+}
+
+#ckeditor {
+  background-color: white;
 }

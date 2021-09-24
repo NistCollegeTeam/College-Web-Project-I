@@ -231,17 +231,18 @@ function deleteHelp($id = NULL)
 
 function paginate($limit, $offset, $count, $category, $search)
 {
-    $text = "";
+    $next_icon = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z' /></svg>";
+    $prev_icon = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-left' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z' /></svg>";
+    echo "<div class='pagination-container'>";
     $static_query = "&limit=" . $limit . "&category=" . $category . "&search=" . $search;
     if ($offset > 0) :
         $prev_offset = $offset - $limit;
-        $text .= "<a class='btn' href='/list.php?offset=" . $prev_offset . $static_query . "' >Previous </a>";
+        echo "<a class='pagination-btn' href='/list.php?offset=" . $prev_offset . $static_query . "' >" . $prev_icon . " </a>";
     endif;
     if ($limit + $offset < $count) :
         $next_offset = $offset + $limit;
-        $text .= "<a class='btn' href='/list.php?offset=" . $next_offset . $static_query . "'>Next</a>";
+        echo "<a class='pagination-btn' href='/list.php?offset=" . $next_offset . $static_query . "'>" . $next_icon . "</a>";
     endif;
-    return $text;
 }
 
 /* login function */

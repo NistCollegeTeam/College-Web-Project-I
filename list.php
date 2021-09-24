@@ -44,13 +44,14 @@ include './includes/function.php';
                         <div class='help-description'>
                             <p><?= $help['description'] ?></p>
                         </div>
-                        <div class='help-meta'> -<?= $help['location'] ?>"</div>
+                        <div class='help-meta'> -<?= $help['location'] ?></div>
                     </div>
                 <?php
                 }
                 $count = $helps['count'];
-                echo (paginate($limit, $offset, $count, $category, $search));
                 ?>
+
+                <?= paginate($limit, $offset, $count, $category, $search); ?>
             </div>
         </div>
     </div>

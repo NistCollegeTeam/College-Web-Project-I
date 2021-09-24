@@ -37,19 +37,20 @@ include "./includes/authentication_required.php";
                 $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
                 $helps = getHelpsByUser($limit, $offset, $search, $category);
                 while ($help = mysqli_fetch_array($helps['results'])) {
-                    echo "
+                ?>
+
                     <div class='help-item'>
                         <div class='help-title'>
-                            <h4>" . $help['title'] . "</h4>
+                            <h4><?= $help['title'] ?></h4>
                         </div>
                         <div class='help-description'>
-                            <p>" . $help['description'] . "</p>
+                            <p><?= $help['description'] ?></p>
                         </div>
-                        <div class='help-meta'> -" . $help['location'] . "</div>
-                        <a href='./update-help.php?help_id=" . $help['id'] . "' class='btn btn-edit'>Edit</a>
-                        <a href='./delete-help.php?help_id=" . $help['id'] . "' class='btn btn-delete'>Delete</a>
+                        <div class='help-meta'><?= $help['location'] ?></div>
+                        <a href='./update-help.php?help_id=<?= $help['id'] ?>' class=' btn btn-edit'>Edit</a>
+                        <a href='./delete-help.php?help_id=<?= $help['id'] ?>' class=' btn btn-delete'>Delete</a>
                     </div>
-                    ";
+                <?php
                 }
                 $count = $helps['count'];
                 echo (paginate($limit, $offset, $count, $category, $search));
@@ -61,7 +62,7 @@ include "./includes/authentication_required.php";
 
 
 
-    <script src="./scripts/nav.js"></script>
+    <script src=" ./scripts/nav.js"></script>
 </body>
 
 </html>

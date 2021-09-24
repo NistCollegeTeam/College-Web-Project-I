@@ -28,6 +28,11 @@ endif;
     <link rel="stylesheet" href="./styles/list.css">
     <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon">
     <title>Sharing is Caring | Create New Help</title>
+    <style>
+        #create-help-description {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -78,6 +83,7 @@ endif;
 
                     <label for="create-help-description">Description:</label><br>
                     <textarea id="create-help-description" placeholder="Description about help..." name='description' class='textarea' required></textarea><br>
+                    <div id="ckeditor"></div>
 
                     <label for="create-help-location">Location:</label><br>
                     <input type="text" placeholder="Help location" id='create-help-location' class='' name="location" required><br>
@@ -93,50 +99,10 @@ endif;
 
     </div>
 
-
-
     <script src="./scripts/nav.js"></script>
-    <script>
-        const inp_title = document.getElementById("create-help-title");
-        const render_inp_title = document.querySelectorAll(".help-title");
-        inp_title.addEventListener("keyup", function(e) {
-            render_inp_title.forEach(element => {
-                element.innerHTML = `<h4>${inp_title.value}<h4>`;
-            });
-        })
-
-        const inp_desc = document.getElementById("create-help-description");
-        const render_inp_desc = document.querySelectorAll(".help-description");
-        inp_desc.addEventListener("keyup", function(e) {
-            render_inp_desc.forEach(element => {
-                element.innerHTML = `<p>${inp_desc.value}<p>`;
-            });
-        })
-
-        const inp_loc = document.getElementById("create-help-location");
-        const render_inp_loc = document.querySelectorAll(".help-meta-location");
-        inp_loc.addEventListener("keyup", function(e) {
-            render_inp_loc.forEach(element => {
-                element.innerHTML = `Address: ${inp_loc.value}`;
-            });
-        })
-
-        const inp_contact = document.getElementById("create-help-contact");
-        const render_inp_contact = document.querySelectorAll(".help-meta-contact");
-        inp_contact.addEventListener("keyup", function(e) {
-            render_inp_contact.forEach(element => {
-                element.innerHTML = `Contact: ${inp_contact.value}`;
-            });
-        })
-
-        const inp_category = document.getElementById("create-help-category");
-        const render_inp_category = document.querySelectorAll(".help-meta-category");
-        inp_category.addEventListener("change", function(e) {
-            render_inp_category.forEach(element => {
-                element.innerHTML = `Category: ${e.srcElement.options[e.srcElement.options.selectedIndex].text}`;
-            });
-        })
-    </script>
+    <script src="./public/ckeditor.js"></script>
+    <script src="./public/newck.js"></script>
+    <script src="./public/ckrender.js"></script>
 </body>
 
 </html>

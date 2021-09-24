@@ -12,10 +12,10 @@
             <option value=''>All Categories</option>
             <?php
             $categories = getHelpCategories();
-            while ($category = mysqli_fetch_array($categories)) {
-                $selected = (isset($_GET['category']) && $category['id'] == $_GET['category']) ? "true" : "false";
+            while ($category = $categories->fetch_assoc()) {
+                $selected = (isset($_GET['category']) && $category['id'] == $_GET['category']) ? "selected" : "";
             ?>
-                <option value="<?= $category['id'] ?>" selected="<?= $selected ?>"><?= ($category['name']) ?></option>
+                <option value="<?= $category['id'] ?>" <?= $selected ?>><?= ($category['name']) ?></option>
             <?php
             }
             ?>
