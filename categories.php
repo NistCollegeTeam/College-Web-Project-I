@@ -1,3 +1,10 @@
+<?php
+include "./includes/function.php";
+if (isAdminUser() !== true) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You do not have permission to perform this action.');
+    header('Location: /');
+endif
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,14 +16,15 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/nav.css">
     <link rel="stylesheet" href="./styles/list.css">
-    <title>Sharing is Caring | Base</title>
+    <title>Sharing is Caring | Manage Categories</title>
 </head>
 
 <body>
     <?php include("./partials/nav.php") ?>
     <div class="container">
         <?php include './partials/message.php'; ?>
-
+        <h1>Categories List</h1>
+        <hr>
     </div>
 
 

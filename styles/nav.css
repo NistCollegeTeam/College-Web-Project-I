@@ -1,8 +1,9 @@
 nav {
   display: flex;
-  padding: 1vh 2vw;
+  padding: 0px 10px;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.877);
+  background-color: rgba(255, 255, 255, 1);
+  /* background-color: rgb(195, 46, 232); */
   z-index: 1;
   position: fixed;
   top: 0;
@@ -14,17 +15,20 @@ nav {
 }
 nav a {
   text-decoration: none;
-  color: black;
 }
 .nav-site-title {
   display: flex;
+  justify-content: space-between;
 }
 
 .logo {
   cursor: pointer;
-  padding: 0.5vh 8px;
+  padding: 0px;
   margin-top: auto;
   margin-bottom: auto;
+  margin-right: 5px;
+  background-color: white;
+  border-radius: 100%;
 }
 
 .nav-title {
@@ -40,32 +44,27 @@ nav a {
   display: flex;
 }
 .nav-item {
+  margin: 0px 5px;
   padding: 1vh 2vw;
   text-align: center;
   top: 30%;
   margin-top: auto;
   margin-bottom: auto;
+  border-radius: 10px;
 }
 .nav-link {
   padding: 5px;
+  color: black;
+}
+.nav-link:hover {
+  background-color: var(--secondary);
+  border-radius: 5px;
 }
 .nav-btn {
   padding: 1vh;
   text-align: center;
 }
-.btn-login {
-  border: none;
-  background-color: var(--primary);
-  color: white;
-}
-.btn-login:active {
-  background-color: var(--primary-btn-active);
-}
-.btn-login:hover,
-.btn-login:focus {
-  box-shadow: 0px 0px 5px var(--secondary), 0 0 5px var(--secondary),
-    0 0 5px var(--secondary);
-}
+
 .avatar {
   width: 40px;
   height: 40px;
@@ -73,13 +72,30 @@ nav a {
   overflow: hidden;
 }
 
+.hamburger {
+  display: none;
+}
+
 @media screen and (max-width: 760px) {
   nav {
     flex-direction: column;
-    background-color: white;
   }
   .nav-links {
     flex-direction: column;
     display: none;
   }
+  .hamburger {
+    display: inline;
+  }
+}
+
+.nav-item:hover {
+  background: var(--secondary);
+}
+
+.nav-item + .active {
+  background: var(--primary);
+}
+.nav-item + .active > :nth-child(1) {
+  color: white !important;
 }

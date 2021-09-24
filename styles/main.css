@@ -1,13 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap"); */
 * {
   --primary: #a65bfc;
   --secondary: #c099e8;
+  --primary-green: #227027;
+  --secondary-green: #90f096;
+  --primary-red: #a81b0e;
+  --secondary-red: #ff7a73;
   --meta: rgb(0, 93, 168);
   --focus-light: rgba(163, 211, 226, 0.897);
   --primary-btn-active: #6a32aa;
   padding: 0px;
   margin: 0px;
-  font-family: Poppins;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -31,18 +36,20 @@
 }
 
 .container {
-  padding: 13vh 10rem 1vh 10rem;
+  padding: 100px 10rem 0px 10rem;
 }
 .btn {
-  border: 0.1rem solid #a8a8a8;
+  border: 0.1rem solid #a8a8a82d;
   padding: 1vh 1vw;
   border-radius: 5px;
   min-height: 30px;
   max-height: 10vh;
   cursor: pointer;
 }
+
 textarea:focus,
 input:focus,
+.input:focus,
 .btn:hover,
 .btn:focus {
   box-shadow: 0px 0px 5px var(--focus-light), 0 0 5px var(--focus-light),
@@ -50,42 +57,143 @@ input:focus,
   outline: none;
 }
 .btn:active {
-  background-color: #808080;
+  background-color: #808080d0;
 }
+
+a {
+  text-decoration: none;
+  color: #858585;
+}
+
 .btn a {
   color: white;
 }
 
 .input,
 input {
-  min-height: 30px;
-  max-height: 10vh;
+  min-height: 3em;
+  width: 100%;
   border-radius: 5px;
-  margin: 1px;
   border: 0.1em solid rgb(131, 122, 122);
+  padding: 0px 1em 0px 1em;
 }
 
 body {
   background: rgb(195, 46, 232);
-  background: linear-gradient(
+  /* background-color: rgba(30, 65, 16, 0.452); */
+  /* background: linear-gradient(
     139deg,
     rgba(195, 46, 232, 1) 0%,
     rgba(232, 71, 200, 1) 39%,
     rgba(228, 95, 255, 1) 100%
-  );
+  ); */
 }
 
 .textarea {
-  min-height: 30px;
-  max-height: 10vh;
+  min-height: 100px;
   border-radius: 5px;
-  margin: 1px;
+  margin: auto;
   border: 0.1em solid rgb(131, 122, 122);
   width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 0px 10px 0px 10px;
 }
 
 @media screen and (max-width: 1100px) {
   .container {
     padding: 13vh 15px 1vh 15px;
   }
+}
+
+.form-center-on-container {
+  padding: 20px 50px;
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  min-width: 400px;
+  max-width: max-content;
+}
+
+.form-container {
+  border-radius: 3px;
+  height: 85vh;
+}
+
+.text-error {
+  color: red;
+}
+
+.text-white {
+  color: white;
+}
+
+.btn-login {
+  border: none;
+  background-color: var(--primary);
+  color: white;
+}
+.btn-login:active {
+  background-color: var(--primary-btn-active);
+}
+.btn-login:hover,
+.btn-login:focus {
+  box-shadow: 0px 0px 5px var(--secondary), 0 0 5px var(--secondary),
+    0 0 5px var(--secondary);
+}
+.btn-login:disabled {
+  background-color: grey;
+}
+
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: var(--primary-green);
+  background-color: var(--secondary-green);
+  border-color: var(--primary-green);
+}
+.alert-danger {
+  color: var(--primary-red);
+  background-color: var(--secondary-red);
+  border-color: var(--primary-red);
+}
+.invalid {
+  border-color: var(--primary-red) !important;
+  background-color: var(--secondary-red) !important;
+}
+
+hr {
+  border: none;
+  background: rgb(47, 46, 46);
+  height: 1px;
+  margin: 2px 0px;
+}
+
+.btn-edit {
+  background-color: rgb(219, 190, 60);
+  color: white;
+}
+.btn-edit:active,
+.btn-edit:hover {
+  background-color: rgb(250, 222, 100);
+  box-shadow: 0px 0px 5px #ffcc26c9, 0 0 5px #ffcc26c9, 0 0 5px #ffcc26c9;
+}
+.btn-delete {
+  background-color: rgb(226, 51, 51);
+  color: white;
+}
+.btn-delete:active,
+.btn-delete:hover {
+  background-color: rgb(255, 118, 118);
+  box-shadow: 0px 0px 5px #f83131c9, 0 0 5px #f83131c9, 0 0 5px #f83131c9;
+}
+
+#ckeditor {
+  background-color: white;
 }

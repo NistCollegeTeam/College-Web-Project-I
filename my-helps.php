@@ -1,5 +1,6 @@
 <?php
-include './includes/function.php';
+include "./includes/function.php";
+include "./includes/authentication_required.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@ include './includes/function.php';
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/nav.css">
     <link rel="stylesheet" href="./styles/list.css">
-    <title>Sharing is Caring | Helps - Search</title>
+    <title>Sharing is Caring | My Helps</title>
 </head>
 
 <body>
@@ -20,7 +21,7 @@ include './includes/function.php';
     <div class="container">
         <?php include './partials/message.php'; ?>
         <div class="title">
-            <h1>Helps Here</h1>
+            <h1>My helps</h1>
         </div>
         <div class="data-section">
             <div class="sidebar">
@@ -34,9 +35,10 @@ include './includes/function.php';
                 $offset = (isset($_GET['offset']) && $_GET['offset'] != null) ? $_GET['offset'] : 0;
                 $category = (isset($_GET['category']) && $_GET['category'] != null) ? $_GET['category'] : NULL;
                 $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
-                $helps = getHelps($limit, $offset, $search, $category);
+                $helps = getHelpsByUser($limit, $offset, $search, $category);
                 while ($help = mysqli_fetch_array($helps['results'])) {
                 ?>
+
                     <div class='help-item'>
                         <div class='help-title'>
                             <h4><?= $help['title'] ?></h4>
@@ -44,19 +46,23 @@ include './includes/function.php';
                         <div class='help-description'>
                             <p><?= $help['description'] ?></p>
                         </div>
-                        <div class='help-meta'> -<?= $help['location'] ?></div>
+                        <div class='help-meta'><?= $help['location'] ?></div>
+                        <a href='./update-help.php?help_id=<?= $help['id'] ?>' class=' btn btn-edit'>Edit</a>
+                        <a href='./delete-help.php?help_id=<?= $help['id'] ?>' class=' btn btn-delete'>Delete</a>
                     </div>
                 <?php
                 }
                 $count = $helps['count'];
+                echo (paginate($limit, $offset, $count, $category, $search));
                 ?>
-
-                <?= paginate($limit, $offset, $count, $category, $search); ?>
             </div>
         </div>
+
     </div>
 
-    <script src="./scripts/nav.js"></script>
+
+
+    <script src=" ./scripts/nav.js"></script>
 </body>
 
 </html>

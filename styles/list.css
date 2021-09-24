@@ -4,25 +4,32 @@
 }
 .data-section {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0.5em;
 }
 .sidebar {
+  flex: 1 1 25%;
   background-color: #e1c9fd;
   height: 60vh;
-  margin-right: 1vw;
-  width: 15%;
+  padding: 1rem;
   border-radius: 5px;
-  padding: 2vh;
-  position: fixed;
 }
 .helplist-container {
-  height: 80vh;
-  width: 75%;
+  flex: 1 1 75%;
+  height: 75vh;
+  min-width: 60%;
   background-color: transparent;
   border-radius: 5px;
   overflow-y: scroll;
-  padding-left: 25%;
+  padding: 0px 0px 0px 1rem;
+}
+.form-section {
+  flex: 1 1 50%;
+  min-width: 50%;
+}
+.render-section {
+  min-width: 50%;
+  flex: 1 1 50%;
 }
 .help-item {
   min-height: 10vh;
@@ -43,6 +50,7 @@
 }
 .search-input {
   margin: 1vh 0px;
+  padding: 0px 10px 0px 10px;
 }
 .search-btn {
   background-color: #9239f9;
@@ -73,4 +81,24 @@
     width: unset;
     margin-top: 10px;
   }
+}
+
+.pagination-btn {
+  color: white;
+  background-color: #e1c9fd;
+  border-radius: 50px;
+  padding: 5px 5px;
+  margin: 10px 10px;
+}
+.pagination-btn:hover {
+  /* background-color: #d4b1fb; */
+  box-shadow: 0px 0px 5px var(--focus-light), 0 0 5px var(--focus-light),
+    0 0 5px var(--focus-light);
+  outline: none;
+}
+.pagination-btn:focus {
+  background-color: #cea5fd;
+  box-shadow: 0px 0px 5px var(--focus-light), 0 0 5px var(--focus-light),
+    0 0 5px var(--focus-light);
+  outline: none;
 }

@@ -2,8 +2,8 @@ body{
  margin: 0;
  background-color: #f93822ff;
 }
-.uni-padding{
-    padding: 0 7%;
+.uni-padding {
+  padding: 0 7%;
 }
 .checkbox{
     cursor: pointer;
@@ -29,13 +29,17 @@ h1{
     padding-right: 190px;
     margin-left: 10px;
     margin-right: 60px;
+h1 {
+  text-align: center;
+  font-family: cursive;
 }
-#lname{
-    float: right;
+#lname {
+  float: right;
 }
-#email{
-    float: right;
+#email {
+  float: right;
 }
+<<<<<<< HEAD
 .btn{
     height: 50px;
     width: 20%;
@@ -49,7 +53,20 @@ h1{
     text-align: center;
     font-size: 20px;
     font-style: normal;
-}
-.btn:hover{
-    background-color: rgb(42, 184, 13);
+=======
+/* .btn {
+  height: 50px;
+  width: 20%;
+  padding: 10px;
+  background-color: rgb(73, 212, 45);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: rgb(250, 249, 255);
+  border-radius: 20px;
+  border-style: none;
+  text-align: center;
+} */
+.btn:hover {
+  background-color: rgb(42, 184, 13);
+>>>>>>> cae4075abed2c3db845982ddba4478ba24947b41
 }
