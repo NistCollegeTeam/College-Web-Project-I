@@ -158,18 +158,17 @@ function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category
     global $conn;
     $lim = $limit !== NULL ? $limit : 10;
     $off = $offset !== NULL ? $offset : 0;
-    $active = 1;
     $search = "%" . $search . "%";
     if ($category !== "" && $category !== NULL && $category !== 0) {
-        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `active` = ? AND `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
-        $sql->bind_param('iiisii', $active, $category, $user_id, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
-        $count_sql->bind_param('iiis', $active, $category, $user_id, $search);
+        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql->bind_param('iisii', $category, $user_id, $search, $lim, $off);
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
+        $count_sql->bind_param('iis', $category, $user_id, $search);
     } else {
-        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `active` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
-        $sql->bind_param('iisii', $active, $user_id, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
-        $count_sql->bind_param('iis', $active, $user_id, $search);
+        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql->bind_param('isii', $user_id, $search, $lim, $off);
+        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
+        $count_sql->bind_param('is', $user_id, $search);
     }
     $count_sql->execute();
     $count = mysqli_fetch_assoc($count_sql->get_result());
@@ -182,25 +181,27 @@ function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category
 }
 
 /* create help */
-function createHelp($title = NULL, $description = NULL, $location = NULL, $contact = NULL, $category = NULL)
+function createHelp($title = NULL, $description = NULL, $location = NULL, $contact = NULL, $category = NULL, $active = NULL)
 {
     global $conn;
-    $sql = $conn->prepare('INSERT INTO helps (title, description, location, contact, helper_id, category) VALUES (?, ?, ?, ?, ? , ?)');
-    $sql->bind_param('sssiii', $title, $description, $location, $contact, $_SESSION['user']['id'], $category);
+    $sql = $conn->prepare('INSERT INTO helps (title, description, location, contact, helper_id, category, active) VALUES (?, ?, ?, ?, ? , ?, ?)');
+    $sql->bind_param('sssiiii', $title, $description, $location, $contact, $_SESSION['user']['id'], $category, $active);
     $sql->execute();
-    $sql->close();
-    $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have created new help!');
-    header('Location: /my-helps.php');
+    if ($sql->affected_rows > 0) {
+        $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have created new help!');
+        $sql->close();
+        header('Location: /my-helps.php');
+    }
     // header('Location: update.php?id=' . $mysqli->insert_id);
     exit();
 }
 
 /* update help */
-function updateHelp($id = NULL, $title = NULL, $description = NULL, $location = NULL, $contact = NULL, $category = NULL)
+function updateHelp($id = NULL, $title = NULL, $description = NULL, $location = NULL, $contact = NULL, $category = NULL, $active = NULL)
 {
     global $conn;
-    $sql = $conn->prepare('UPDATE `helps` SET title= ?, description= ?, location= ?, contact= ?, category= ? WHERE id= ?');
-    $sql->bind_param('sssiii', $title, $description, $location, $contact, $category, $id);
+    $sql = $conn->prepare('UPDATE `helps` SET title= ?, description= ?, location= ?, contact= ?, category= ?, active = ? WHERE id= ?');
+    $sql->bind_param('sssiiii', $title, $description, $location, $contact, $category, $active, $id);
     $sql->execute();
     if ($sql->affected_rows === 0) :
         $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Error updating help!');
@@ -209,7 +210,6 @@ function updateHelp($id = NULL, $title = NULL, $description = NULL, $location = 
     endif;
     $sql->close();
     header('Location: /update-help.php?help_id=' . $id);
-    // header('Location: update.php?id=' . $mysqli->insert_id);
     exit();
 }
 function deleteHelp($id = NULL)
@@ -299,7 +299,7 @@ function getRelatedHelps($cat = NULL)
 {
     $result = array();
     global $conn;
-    $sql = $conn->prepare("SELECT * FROM helps WHERE category = ? LIMIT 10");
+    $sql = $conn->prepare("SELECT * FROM helps WHERE category = ? AND active = 1 ORDER BY `helps`.`id` DESC LIMIT 10 ");
     $sql->bind_param("i", $cat);
     $sql->execute();
     $rows = $sql->get_result();
@@ -308,7 +308,7 @@ function getRelatedHelps($cat = NULL)
         array_push($result, $row);
     }
     if ($rows->num_rows < 3) {
-        $sql = $conn->prepare("SELECT * FROM helps LIMIT 7");
+        $sql = $conn->prepare("SELECT * FROM helps WHERE active = 1 ORDER BY `helps`.`id` DESC LIMIT 7");
         $sql->execute();
         $new_res = $sql->get_result();
         while ($row = $new_res->fetch_array()) {

@@ -7,12 +7,14 @@ if (isset($_POST['post_help'])) :
     $location = $_POST['location'];
     $contact = $_POST['contact'];
     $category = $_POST['category'];
+    $active = isset($_POST['active']) ? 1 : 0;
     createHelp(
         $title,
         $description,
         $location,
         $contact,
-        $category
+        $category,
+        $active
     );
 endif;
 ?>
@@ -90,6 +92,9 @@ endif;
 
                     <label for="create-help-contact">Contact:</label><br>
                     <input type="number" placeholder="Helper contact number" id='create-help-contact' class='' name="contact" required><br>
+
+                    <label for="create-help-active">Active:</label><br>
+                    <input type="checkbox" id='create-help-active' class='' value="1" name="active"><br>
 
                     <button type="submit" value="submit" name="post_help" class="btn btn-login">Post Help</button>
                 </form>

@@ -108,3 +108,13 @@
   font-weight: 600;
   font-size: 25px;
 }
+
+.related-helps {
+  max-width: 35ch;
+  min-width: 35ch;
+}
+
+.related-helps h3,
+.related-helps a {
+  font-size: 15px;
+}

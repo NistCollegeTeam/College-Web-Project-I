@@ -24,6 +24,8 @@ if (isset($_POST['update_help'])) :
     $location = $_POST['location'];
     $contact = $_POST['contact'];
     $category = $_POST['category'];
+    $active = isset($_POST['active']) ? 1 : 0;
+    echo $active;
     updateHelp(
         $help_id,
         $title,
@@ -31,6 +33,7 @@ if (isset($_POST['update_help'])) :
         $location,
         $contact,
         $category,
+        $active
     );
 endif;
 ?>
@@ -123,6 +126,12 @@ endif;
 
                     <label for="create-help-contact">Contact:</label><br>
                     <input type="number" placeholder="Helper contact number" id='create-help-contact' class='' name="contact" required value="<?= $help->contact ?>"><br>
+
+                    <label for="create-help-active">Active:</label><br>
+                    <?php
+                    $selected = $help->active == 1 ? "checked" : ""
+                    ?>
+                    <input type="checkbox" id='create-help-active' class='' name="active" value="1" <?= $selected ?>><br>
 
                     <button type="submit" value="submit" name="update_help" class="btn btn-edit">Update Help</button>
                 </form>
