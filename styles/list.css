@@ -14,7 +14,8 @@
   padding: 1rem;
   border-radius: 5px;
 }
-.helplist-container {
+.helplist-container,
+.related-helps {
   flex: 1 1 75%;
   height: 75vh;
   min-width: 60%;

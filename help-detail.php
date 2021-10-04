@@ -67,6 +67,24 @@ endif;
                     </div>
                 </div>
             </div>
+            <div class="">
+                <h3>Related Helps</h3>
+                <div class="related-helps">
+                    <?php
+                    $rel_helps = getRelatedHelps($cat = $help->category);
+                    foreach ($rel_helps as $help) {
+                    ?>
+                        <div class='help-item'>
+                            <div class='help-title'>
+                                <h3><?= $help['title'] ?></h3>
+                            </div>
+                            <div class="view-more"><a href="./help-detail.php?help_id=<?= $help['id'] ?>" class="">view help&rarr;</a></div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
 
     </div>

@@ -294,3 +294,27 @@ function echoCategoryName($id = NULL)
     }
     $sql->close();
 }
+
+function getRelatedHelps($cat = NULL)
+{
+    $result = array();
+    global $conn;
+    $sql = $conn->prepare("SELECT * FROM helps WHERE category = ? LIMIT 10");
+    $sql->bind_param("i", $cat);
+    $sql->execute();
+    $rows = $sql->get_result();
+    $sql->close();
+    while ($row = $rows->fetch_array()) {
+        array_push($result, $row);
+    }
+    if ($rows->num_rows < 3) {
+        $sql = $conn->prepare("SELECT * FROM helps LIMIT 7");
+        $sql->execute();
+        $new_res = $sql->get_result();
+        while ($row = $new_res->fetch_array()) {
+            array_push($result, $row);
+        }
+        $sql->close();
+    }
+    return $result;
+}
