@@ -100,9 +100,9 @@ endif;
     </div>
 
     <script src="./scripts/nav.js"></script>
-    <script src="./public/ckeditor.js"></script>
-    <script src="./public/newck.js"></script>
-    <script src="./public/ckrender.js"></script>
+    <script src="./scripts/ckeditor.js"></script>
+    <script src="./scripts/newck.js"></script>
+    <script src="./scripts/inputRender.js"></script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ if (isset($_GET['help_id'])) :
     $help_id = $_GET['help_id'];
     $help_res = getHelpById($help_id, $_SESSION['user']['id']);
     if ($help_res->num_rows != 0) :
-        while ($row = $help_res->fetch_assoc()) {
+        while ($row = $help_res->fetch_object()) {
             $help = $row;
         }
     else :
@@ -41,7 +41,7 @@ endif;
     <div class="container">
         <?php include './partials/message.php'; ?>
         <div class="title">
-            <h1>Delete Help: <?= $help['title'] ?></h1>
+            <h1>Delete Help: <?= $help->title ?></h1>
         </div>
         <div class="data-section">
             <div class="helplist-container">

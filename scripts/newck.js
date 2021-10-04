@@ -9,7 +9,7 @@ ClassicEditor.create(document.querySelector("#ckeditor"), {
       "outdent",
       "indent",
       "|",
-      "insertTable",
+      // "insertTable",
       "undo",
       "redo",
       "underline",

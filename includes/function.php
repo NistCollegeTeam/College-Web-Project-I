@@ -48,7 +48,7 @@ function authenticate($email = NULL, $password = NULL)
                 $_SESSION['user']['email'] = $row['email'];
                 $_SESSION['user']['role'] = $row['role'];
                 $_SESSION['message'] = array('type' => 'success', 'msg' => 'You are authenticated.');
-                header('Location :/');
+                Header('Location: ./list.php');
             else :
                 $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Your email or password is incorrect. Please try again.');
             endif;
@@ -103,12 +103,12 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
     $active = 1;
     $search = "%" . $search . "%";
     if ($category !== "" && $category !== NULL && $category !== 0) {
-        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `category` = ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql = $conn->prepare("SELECT id, location, title, description FROM helps WHERE `active` = ? AND `category` = ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('iisii', $active, $category, $search, $lim, $off);
         $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `category` = ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
         $count_sql->bind_param('iis', $active, $category, $search);
     } else {
-        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql = $conn->prepare("SELECT id, location, title, description FROM helps WHERE `active` = ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('isii', $active, $search, $lim, $off);
         $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
         $count_sql->bind_param('is', $active, $search);
@@ -161,12 +161,12 @@ function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category
     $active = 1;
     $search = "%" . $search . "%";
     if ($category !== "" && $category !== NULL && $category !== 0) {
-        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `active` = ? AND `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('iiisii', $active, $category, $user_id, $search, $lim, $off);
         $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
         $count_sql->bind_param('iiis', $active, $category, $user_id, $search);
     } else {
-        $sql = $conn->prepare("SELECT * FROM `helps` WHERE `active` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `active` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
         $sql->bind_param('iisii', $active, $user_id, $search, $lim, $off);
         $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `active` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
         $count_sql->bind_param('iis', $active, $user_id, $search);
@@ -192,7 +192,7 @@ function createHelp($title = NULL, $description = NULL, $location = NULL, $conta
     $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have created new help!');
     header('Location: /my-helps.php');
     // header('Location: update.php?id=' . $mysqli->insert_id);
-    // exit();
+    exit();
 }
 
 /* update help */

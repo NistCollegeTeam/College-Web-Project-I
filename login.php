@@ -4,7 +4,6 @@ if (isset($_POST['loginBtn'])) :
     $email = $_POST['email'];
     $password = $_POST['password'];
     authenticate($email, $password);
-    header('Location : /list.php');
 endif;
 ?>
 <!DOCTYPE html>

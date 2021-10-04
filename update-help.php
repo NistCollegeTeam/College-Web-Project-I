@@ -5,7 +5,7 @@ if (isset($_GET['help_id'])) :
     $help_id = $_GET['help_id'];
     $help_res = getHelpById($help_id, $_SESSION['user']['id']);
     if ($help_res->num_rows != 0) :
-        while ($row = $help_res->fetch_assoc()) {
+        while ($row = $help_res->fetch_object()) {
             $help = $row;
         }
     else :
@@ -58,35 +58,35 @@ endif;
     <div class="container">
         <?php include './partials/message.php'; ?>
         <div class="title">
-            <h1>Edit Help: <?= $help['title'] ?></h1>
+            <h1>Edit Help: <?= $help->title ?></h1>
         </div>
         <div class="data-section">
             <div class="render-section">
                 <div class="">
                     <div class='help-item help-item-card'>
                         <div class='help-title'>
-                            <h4><?= $help['title'] ?></h4>
+                            <h3><?= $help->title ?></h3>
                         </div>
                         <div class='help-description'>
-                            <p><?= $help['description'] ?></p>
+                            <p><?= $help->description ?></p>
                         </div>
-                        <div class='help-meta help-meta-location'><?= $help['location'] ?></div>
+                        <div class='help-meta help-meta-location'><?= $help->location ?></div>
                     </div>
                     <div class='help-item'>
                         <div class='help-title'>
-                            <h4><?= $help['title'] ?></h4>
+                            <h3><?= $help->title ?></h3>
                         </div>
                         <div class='help-description'>
-                            <p><?= $help['description'] ?></p>
+                            <p><?= $help->description ?></p>
                         </div>
                         <div class='help-meta help-meta-category'>
-                            Category: <?php echoCategoryName($help['category']); ?>
+                            Category: <?php echoCategoryName($help->category); ?>
                         </div>
                         <div class='help-meta help-meta-contact'>
-                            Contact: <?= $help['contact'] ?>
+                            Contact: <?= $help->contact ?>
                         </div>
                         <div class='help-meta help-meta-location'>
-                            Address: <?= $help['location'] ?>
+                            Address: <?= $help->location ?>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ endif;
             <div class="form-section">
                 <form class="help-item" method="post" action="./update-help.php?help_id=<?= $help_id ?>" id='createHelpForm' name='createHelpForm'>
                     <label for="create-help-title">Title:</label><br>
-                    <input type="text" placeholder="Help title" id='create-help-title' class='' name="title" value="<?= $help['title'] ?>" required><br>
+                    <input type="text" placeholder="Help title" id='create-help-title' class='' name="title" value="<?= $help->title ?>" required><br>
 
                     <label for="create-help-category">Help Category:</label><br>
                     <select id='create-help-category' class='input' name="category" required>
@@ -103,7 +103,7 @@ endif;
                         while ($category = mysqli_fetch_array($categories)) {
                         ?>
                             <option value="<?= $category['id'] ?>" <?php
-                                                                    if ($help['category'] == $category['id']) {
+                                                                    if ($help->category == $category['id']) {
                                                                         echo "selected";
                                                                     } ?>>
                                 <?= $category['name'] ?>
@@ -114,15 +114,15 @@ endif;
                     </select><br>
 
                     <label for="create-help-description">Description:</label><br>
-                    <textarea id="create-help-description" placeholder="Description about help..." name='description' class='textarea' required></textarea><br>
-                    <div id="ckeditor"> <?= $help["description"] ?></div>
+                    <textarea id="create-help-description" placeholder="Description about help..." name='description' class='textarea' required><?= $help->description ?></textarea><br>
+                    <div id="ckeditor"> <?= $help->description ?></div>
 
 
                     <label for="create-help-location">Location:</label><br>
-                    <input type="text" placeholder="Help location" id='create-help-location' class='' name="location" required value="<?= $help["location"] ?>"><br>
+                    <input type="text" placeholder="Help location" id='create-help-location' class='' name="location" required value="<?= $help->location ?>"><br>
 
                     <label for="create-help-contact">Contact:</label><br>
-                    <input type="number" placeholder="Helper contact number" id='create-help-contact' class='' name="contact" required value="<?= $help["contact"] ?>"><br>
+                    <input type="number" placeholder="Helper contact number" id='create-help-contact' class='' name="contact" required value="<?= $help->contact ?>"><br>
 
                     <button type="submit" value="submit" name="update_help" class="btn btn-edit">Update Help</button>
                 </form>
@@ -132,9 +132,9 @@ endif;
     </div>
 
     <script src="./scripts/nav.js"></script>
-    <script src="./public/ckeditor.js"></script>
-    <script src="./public/newck.js"></script>
-    <script src="./public/ckrender.js"></script>
+    <script src="./scripts/ckeditor.js"></script>
+    <script src="./scripts/newck.js"></script>
+    <script src="./scripts/inputRender.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@ const ckeditor = document.querySelectorAll(".ck.ck-content")[0];
 const inp_desc = document.getElementById("create-help-description");
 const render_inp_desc = document.querySelectorAll(".help-description");
 
-ckeditor.addEventListener("keyup", function (e) {
+ckeditor.addEventListener("keyup", function () {
   let text = ckeditor.innerHTML;
   inp_desc.value = text;
   render_inp_desc.forEach((element) => {
@@ -12,15 +12,15 @@ ckeditor.addEventListener("keyup", function (e) {
 
 const inp_title = document.getElementById("create-help-title");
 const render_inp_title = document.querySelectorAll(".help-title");
-inp_title.addEventListener("keyup", function (e) {
+inp_title.addEventListener("keyup", function () {
   render_inp_title.forEach((element) => {
-    element.innerHTML = `<h4>${inp_title.value}<h4>`;
+    element.innerHTML = `<h3>${inp_title.value}<h3>`;
   });
 });
 
 const inp_loc = document.getElementById("create-help-location");
 const render_inp_loc = document.querySelectorAll(".help-meta-location");
-inp_loc.addEventListener("keyup", function (e) {
+inp_loc.addEventListener("keyup", function () {
   render_inp_loc.forEach((element) => {
     element.innerHTML = `Address: ${inp_loc.value}`;
   });

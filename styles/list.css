@@ -102,3 +102,8 @@
     0 0 5px var(--focus-light);
   outline: none;
 }
+
+.help-title > * {
+  font-weight: 600;
+  font-size: 25px;
+}

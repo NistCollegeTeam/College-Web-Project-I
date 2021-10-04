@@ -58,6 +58,7 @@ nav a {
 }
 .nav-link:hover {
   background-color: var(--secondary);
+  color: white;
   border-radius: 5px;
 }
 .nav-btn {
@@ -89,13 +90,13 @@ nav a {
   }
 }
 
-.nav-item:hover {
+.nav-link:hover {
   background: var(--secondary);
 }
 
-.nav-item + .active {
+.nav-link + .active {
   background: var(--primary);
 }
-.nav-item + .active > :nth-child(1) {
+.btn-login:hover {
   color: white !important;
 }

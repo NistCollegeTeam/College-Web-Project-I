@@ -36,19 +36,20 @@ include "./includes/authentication_required.php";
                 $category = (isset($_GET['category']) && $_GET['category'] != null) ? $_GET['category'] : NULL;
                 $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
                 $helps = getHelpsByUser($limit, $offset, $search, $category);
-                while ($help = mysqli_fetch_array($helps['results'])) {
+                while ($help = $helps['results']->fetch_assoc()) {
                 ?>
 
                     <div class='help-item'>
                         <div class='help-title'>
-                            <h4><?= $help['title'] ?></h4>
+                            <h3><?= $help['title'] ?></h3>
                         </div>
                         <div class='help-description'>
                             <p><?= $help['description'] ?></p>
                         </div>
                         <div class='help-meta'><?= $help['location'] ?></div>
-                        <a href='./update-help.php?help_id=<?= $help['id'] ?>' class=' btn btn-edit'>Edit</a>
-                        <a href='./delete-help.php?help_id=<?= $help['id'] ?>' class=' btn btn-delete'>Delete</a>
+                        <a href='./update-help.php?help_id=<?= $help['id'] ?>' class=''>Edit</a>
+                        |
+                        <a href='./delete-help.php?help_id=<?= $help['id'] ?>' class=''>Delete</a>
                     </div>
                 <?php
                 }

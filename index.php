@@ -18,13 +18,13 @@ include './includes/function.php';
 <body>
     <?php include("./partials/nav.php") ?>
     <div class="container">
-        <!-- <div class="title">
+        <div class="title">
             <h1>Sharing Is Caring</h1>
         </div>
         <?php include './partials/message.php'; ?>
         <div class="youtube title">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/Un9BVWXVMG4?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div> -->
+        </div>
     </div>
 
 

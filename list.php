@@ -39,12 +39,13 @@ include './includes/function.php';
                 ?>
                     <div class='help-item'>
                         <div class='help-title'>
-                            <h4><?= $help['title'] ?></h4>
+                            <h3><?= $help['title'] ?></h3>
                         </div>
                         <div class='help-description'>
                             <p><?= $help['description'] ?></p>
                         </div>
                         <div class='help-meta'> -<?= $help['location'] ?></div>
+                        <div class="view-more"><a href="./help-detail.php?help_id=<?= $help['id'] ?>" class="">view help&rarr;</a></div>
                     </div>
                 <?php
                 }
