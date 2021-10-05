@@ -295,7 +295,7 @@ function echoCategoryName($id = NULL)
     $sql->close();
 }
 
-function getRelatedHelps($cat = NULL)
+function getRelatedHelps($cat = NULL, $cur_help_id = NULL)
 {
     $result = array();
     global $conn;
@@ -305,13 +305,19 @@ function getRelatedHelps($cat = NULL)
     $rows = $sql->get_result();
     $sql->close();
     while ($row = $rows->fetch_array()) {
+        if ($row['id'] == $cur_help_id) {
+            continue;
+        }
         array_push($result, $row);
     }
-    if ($rows->num_rows < 3) {
+    if ($rows->num_rows < 8) {
         $sql = $conn->prepare("SELECT * FROM helps WHERE active = 1 ORDER BY `helps`.`id` DESC LIMIT 7");
         $sql->execute();
         $new_res = $sql->get_result();
         while ($row = $new_res->fetch_array()) {
+            if ($row['id'] == $cur_help_id || in_array($row, $result)) {
+                continue;
+            }
             array_push($result, $row);
         }
         $sql->close();

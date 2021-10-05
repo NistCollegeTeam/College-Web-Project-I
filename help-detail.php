@@ -71,7 +71,7 @@ endif;
                 <h3>Related Helps</h3>
                 <div class="related-helps">
                     <?php
-                    $rel_helps = getRelatedHelps($cat = $help->category);
+                    $rel_helps = getRelatedHelps($cat = $help->category, $cur_help_id = $help->id);
                     foreach ($rel_helps as $help) {
                     ?>
                         <div class='help-item'>

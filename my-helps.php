@@ -25,9 +25,18 @@ include "./includes/authentication_required.php";
         </div>
         <div class="data-section">
             <div class="sidebar">
-                <?php
-                include("partials/search_sidebar.php");
-                ?>
+                <div class="">
+                    <b>Filter Your Search</b>
+                    <hr>
+                    <form class="search-form">
+                        <?php include "./partials/search_inp.php" ?>
+                        <?php include "./partials/category_inp.php" ?>
+                        <?php include "./partials/active_inp.php" ?>
+                        <button class=" btn search-btn">
+                            Search
+                        </button>
+                    </form>
+                </div>
             </div>
             <div class="helplist-container" autofocus>
                 <?php

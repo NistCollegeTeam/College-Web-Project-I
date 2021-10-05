@@ -2,24 +2,8 @@
     <b>Filter Your Search</b>
     <hr>
     <form class="search-form">
-        <?php
-        $input_value = isset($_GET['search']) ? $_GET['search'] : "";
-        ?>
-        <label for='search'>Search Helps:</label>
-        <input type='text' name='search' class='search-input input' placeholder='Search Helps' value="<?= $input_value ?>">
-        <label for='category'>Select Category:</label>
-        <select id='create-help-category' class='search-input input' name='category'>
-            <option value=''>All Categories</option>
-            <?php
-            $categories = getHelpCategories();
-            while ($category = $categories->fetch_assoc()) {
-                $selected = (isset($_GET['category']) && $category['id'] == $_GET['category']) ? "selected" : "";
-            ?>
-                <option value="<?= $category['id'] ?>" <?= $selected ?>><?= ($category['name']) ?></option>
-            <?php
-            }
-            ?>
-        </select><br>
+        <?php include "search_inp.php" ?>
+        <?php include "category_inp.php" ?>
         <button class=" btn search-btn">
             Search
         </button>
