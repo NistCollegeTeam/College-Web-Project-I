@@ -68,11 +68,7 @@ function logout()
 // check if user is logged in
 function isAuthenticated()
 {
-    if (isset($_SESSION['user'])) :
-        return true;
-    else :
-        return false;
-    endif;
+    return isset($_SESSION['user']);
 }
 
 // check if user is logged in
@@ -114,12 +110,12 @@ function getHelps($limit = NULL, $offset = NULL, $search = NULL, $category = NUL
         $count_sql->bind_param('is', $active, $search);
     }
     $count_sql->execute();
-    $count = mysqli_fetch_assoc($count_sql->get_result());
+    $count = $count_sql->get_result()->fetch_object();
     $count_sql->close();
     $sql->execute();
     $helps = $sql->get_result();
     $sql->close();
-    $data = array('count' => $count['total'], 'results' => $helps);
+    $data = array('count' => $count->total, 'results' => $helps);
     return $data;
 }
 
@@ -144,41 +140,41 @@ function getHelpById($help_id = NULL, $owner = NULL)
     }
 }
 
-function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category = NULL, $user_id = NULL)
-{
-    if (!isset($user_id)) {
-        try {
-            $user_id = $_SESSION['user']['id'];
-        } catch (Throwable $throwable) {
-            $_SESSION['message'] = array('type' => 'danger', 'msg' => 'No users Provided!😟');
-            header("Location: /");
-            exit();
-        }
-    }
-    global $conn;
-    $lim = $limit !== NULL ? $limit : 10;
-    $off = $offset !== NULL ? $offset : 0;
-    $search = "%" . $search . "%";
-    if ($category !== "" && $category !== NULL && $category !== 0) {
-        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
-        $sql->bind_param('iisii', $category, $user_id, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
-        $count_sql->bind_param('iis', $category, $user_id, $search);
-    } else {
-        $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
-        $sql->bind_param('isii', $user_id, $search, $lim, $off);
-        $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
-        $count_sql->bind_param('is', $user_id, $search);
-    }
-    $count_sql->execute();
-    $count = mysqli_fetch_assoc($count_sql->get_result());
-    $count_sql->close();
-    $sql->execute();
-    $helps = $sql->get_result();
-    $sql->close();
-    $data = array('count' => $count['total'], 'results' => $helps);
-    return $data;
-}
+// function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category = NULL, $user_id = NULL)
+// {
+//     if (!isset($user_id)) {
+//         try {
+//             $user_id = $_SESSION['user']['id'];
+//         } catch (Throwable $throwable) {
+//             $_SESSION['message'] = array('type' => 'danger', 'msg' => 'No users Provided!😟');
+//             header("Location: /");
+//             exit();
+//         }
+//     }
+//     global $conn;
+//     $lim = $limit !== NULL ? $limit : 10;
+//     $off = $offset !== NULL ? $offset : 0;
+//     $search = "%" . $search . "%";
+//     if ($category !== "" && $category !== NULL && $category !== 0) {
+//         $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+//         $sql->bind_param('iisii', $category, $user_id, $search, $lim, $off);
+//         $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `category` = ? AND `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
+//         $count_sql->bind_param('iis', $category, $user_id, $search);
+//     } else {
+//         $sql = $conn->prepare("SELECT id, location, title, description FROM `helps` WHERE `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ? ORDER BY `id` DESC LIMIT ? OFFSET ?");
+//         $sql->bind_param('isii', $user_id, $search, $lim, $off);
+//         $count_sql = $conn->prepare("SELECT COUNT(id) as total FROM `helps` WHERE `helper_id`= ? AND CONCAT_WS('',`title`,`description`) LIKE ?");
+//         $count_sql->bind_param('is', $user_id, $search);
+//     }
+//     $count_sql->execute();
+//     $count = $count_sql->get_result()->fetch_object();
+//     $count_sql->close();
+//     $sql->execute();
+//     $helps = $sql->get_result();
+//     $sql->close();
+//     $data = array('count' => $count->total, 'results' => $helps);
+//     return $data;
+// }
 
 /* create help */
 function createHelp($title = NULL, $description = NULL, $location = NULL, $contact = NULL, $category = NULL, $active = NULL)
@@ -323,4 +319,41 @@ function getRelatedHelps($cat = NULL, $cur_help_id = NULL)
         $sql->close();
     }
     return $result;
+}
+
+
+function getHelpsByUser($limit = NULL, $offset = NULL, $search = NULL, $category = NULL, $user_id = NULL, $active = NULL)
+{
+    if (!isset($user_id)) {
+        try {
+            $user_id = $_SESSION['user']['id'];
+        } catch (Throwable $throwable) {
+            $_SESSION['message'] = array('type' => 'danger', 'msg' => 'No users Provided!😟');
+            header("Location: /");
+            exit();
+        }
+    }
+    global $conn;
+    $lim = $limit !== NULL ? $limit : 10;
+    $off = $offset !== NULL ? $offset : 0;
+    $search = $conn->real_escape_string($search);
+    $category = $conn->real_escape_string($category);
+    $frm_q = "FROM `helps` WHERE `helper_id`= $user_id ";
+    $order_q = "ORDER BY `id` DESC LIMIT $lim OFFSET $off";
+    $search_q = "AND (`title` LIKE \"%$search%\" OR `description` LIKE \"%$search%\") ";
+    if ($category !== "" && $category !== NULL && $category !== 0) {
+        $frm_q .= "AND `category` = $category ";
+    }
+    if ($active !== "" && $active !== NULL) {
+        $frm_q .= "AND `active` = $active ";
+    }
+    $query = "SELECT id, location, title, description " . $frm_q . $search_q . $order_q;
+    $sql = $conn->prepare($query);
+    $sql->execute();
+    $helps = $sql->get_result();
+    $sql->close();
+    $count_sql = $conn->prepare("SELECT COUNT(id) as total " . $frm_q . $search_q);
+    $count_sql->execute();
+    $helps_count = $count_sql->get_result()->fetch_object();
+    return array("results" => $helps, "count" => $helps_count->total);
 }

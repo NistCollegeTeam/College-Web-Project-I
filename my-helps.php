@@ -43,8 +43,9 @@ include "./includes/authentication_required.php";
                 $limit = (isset($_GET['limit']) && $_GET['limit'] != null) ? $_GET['limit'] : 10;
                 $offset = (isset($_GET['offset']) && $_GET['offset'] != null) ? $_GET['offset'] : 0;
                 $category = (isset($_GET['category']) && $_GET['category'] != null) ? $_GET['category'] : NULL;
+                $active = (isset($_GET['active']) && $_GET['active'] != null) ? $_GET['active'] : NULL;
                 $search = (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : "";
-                $helps = getHelpsByUser($limit, $offset, $search, $category);
+                $helps = getHelpsByUser($limit, $offset, $search, $category, $_SESSION['user']['id'], $active);
                 while ($help = $helps['results']->fetch_assoc()) {
                 ?>
 
